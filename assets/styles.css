@@ -1,0 +1,13 @@
+
+#addProductButton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#message {
+    color: green;
+    font-weight: bold;
+}

@@ -1,20 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product Manager</title>
   <link rel="stylesheet" href="../assets/styles.css">
 </head>
+
 <body>
-  <h1>Product Manager</h1>
-  <form id="productForm">
-    <label for="productName">Product Name:</label>
-    <input type="text" id="productName" name="productName" required>
-    <br>
-    <button type="button" id="addProductButton">Add Product</button>
-  </form>
-  <p id="message"></p>
+
+  <div id="add-product">
+    <h1>Product Manager</h1>
+    <form id="productForm">
+      <div class="form-group">
+        <label for="productName">Product Name:</label>
+        <input type="text" id="productName" name="productName" required>
+      </div>
+  
+      <div id="questionsContainer" class="form-group">
+        <label for="productQuestion">Product Questions:</label>
+        <div id="questionInputs">
+          <input type="text" name="productQuestion[]" required>
+        </div>
+        <button type="button" id="addQuestionButton">Add Question</button>
+      </div>
+  
+      <div id="optionsContainer" class="form-group">
+        <label for="productOption">Product Options:</label>
+        <div id="optionInputs">
+          <input type="text" name="productOption[]" required>
+        </div>
+        <button type="button" id="addOptionButton">Add Option</button>
+      </div>
+  
+      <br>
+  
+      <button type="button" id="addProductButton">Add Product</button>
+    </form>
+    <p id="message"></p>
+  </div>
+
+  <div id="get-product">
+    <h2>Products</h2>
+
+    <form id="getProductForm">
+      <label for="productNameToGet">Product Name:</label>
+      <input type="text" id="productNameToGet" name="productNameToGet" required>
+      <br>
+      <button type="button" id="getProductButton">Get Product</button>
+    </form>
+
+  </div>
+
   <script type="module" src="../scripts/script.js"></script>
 </body>
+
 </html>

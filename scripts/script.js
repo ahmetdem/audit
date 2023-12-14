@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const addQuestionButton = document.getElementById('addQuestionButton');
   const addOptionButton = document.getElementById('addOptionButton');
   const addProductButton = document.getElementById('addProductButton');
+  const getProductButton = document.getElementById('getProductButton');
+  const resetDatabaseButton = document.getElementById('resetDatabaseButton');
 
 
   addQuestionButton.addEventListener('click', function () {
@@ -51,6 +53,25 @@ document.addEventListener('DOMContentLoaded', function () {
         showMessage(`Product ${newDocument.name} was added successfully!`, 'green');
         product.displayInfo();
       });
+    });
+  });
+
+  resetDatabaseButton.addEventListener('click', function () {
+    db.resetDatabase();
+    showMessage('Database was reset successfully!', 'green');
+  });
+
+  getProductButton.addEventListener('click', function () {
+    const productName = document.getElementById('productNameToGet').value;
+
+    db.findProductByName(productName, (document) => {
+      if (document) {
+        showMessage(`Product ${document.name} was found!`, 'green');
+        const product = new Product(document.id, document.name, document.questions);
+        product.displayInfo();
+      } else {
+        showMessage(`Product ${productName} was not found!`, 'red');
+      }
     });
   });
 });

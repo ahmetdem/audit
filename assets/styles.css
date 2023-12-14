@@ -5,143 +5,176 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f2f2f2;
-  }
-  
-  h1,
-  h2 {
+}
+
+h1, h2 {
     text-align: center;
-  }
-  
-  #add-product {
+}
+
+#add-product {
     width: 500px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #fff;
-  }
-  
-  #add-product form {
+}
+
+#add-product form {
     display: flex;
     flex-direction: column;
-  }
-  
-  #add-product form .form-group {
+}
+
+#add-product form .form-group {
     margin-bottom: 15px;
-  }
-  
-  #add-product form label {
+}
+
+#add-product form label {
     display: block;
     margin-bottom: 5px;
-  }
-  
-  #add-product form input[type="text"] {
+}
+
+#add-product form input[type="text"] {
     width: 100%;
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 3px;
-  }
-  
-  #add-product form button {
+}
+
+#add-product form button {
     cursor: pointer;
     background-color: #337ab7;
     color: #fff;
     padding: 5px 10px;
     border: 1px solid #337ab7;
     border-radius: 3px;
-  }
-  
-  #add-product form button:hover {
+}
+
+#add-product form button:hover {
     background-color: #286090;
-  }
-  
-  #add-product form #questionsContainer {
+}
+
+#add-product form #questionsContainer {
     position: relative;
-  }
-  
-  #add-product form #questionsContainer #questionInputs {
+}
+
+#add-product form #questionsContainer #questionInputs {
     display: flex;
     flex-direction: column;
-  }
-  
-  #add-product form #questionsContainer #questionInputs input {
+}
+
+#add-product form #questionsContainer #questionInputs input {
     margin-bottom: 5px;
-  }
-  
-  #add-product form #questionsContainer #addQuestionButton {
+}
+
+#add-product form #questionsContainer #addQuestionButton {
     position: absolute;
     top: 0;
     right: 0;
-  }
-  
-  #add-product form #optionsContainer {
+}
+
+#add-product form #optionsContainer {
     position: relative;
-  }
-  
-  #add-product form #optionsContainer #optionInputs {
+}
+
+#add-product form #optionsContainer #optionInputs {
     display: flex;
     flex-direction: column;
-  }
-  
-  #add-product form #optionsContainer #optionInputs input {
+}
+
+#add-product form #optionsContainer #optionInputs input {
     margin-bottom: 5px;
-  }
-  
-  #add-product form #optionsContainer #addOptionButton {
+}
+
+#add-product form #optionsContainer #addOptionButton {
     position: absolute;
     top: 0;
     right: 0;
-  }
-  
-  #add-product form #message {
+}
+
+#add-product form #message {
     margin-top: 15px;
     color: #337ab7;
-  }
-  
-  #get-product {
+}
+
+#get-product {
     width: 500px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #fff;
-  }
-  
-  #get-product form {
+}
+
+#get-product form {
     display: flex;
     flex-direction: column;
-  }
-  
-  #get-product form .form-group {
+}
+
+#get-product form .form-group {
     margin-bottom: 15px;
-  }
-  
-  #get-product form label {
+}
+
+#get-product form label {
     display: block;
     margin-bottom: 5px;
-  }
-  
-  #get-product form input[type="text"] {
+}
+
+#get-product form input[type="text"] {
     width: 100%;
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 3px;
-  }
-  
-  #get-product form button {
+}
+
+#get-product form button {
     cursor: pointer;
     background-color: #337ab7;
     color: #fff;
     padding: 5px 10px;
     border: 1px solid #337ab7;
     border-radius: 3px;
-  }
-  
-  #get-product form button:hover {
+}
+
+#get-product form button:hover {
     background-color: #286090;
-  }
-  
-  #get-product form #message {
+}
+
+#get-product form #message {
     margin-top: 15px;
     color: #337ab7;
-  }
+}
+
+#reset-database {
+    width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+#reset-database button {
+    cursor: pointer;
+    background-color: #337ab7;
+    color: #fff;
+    padding: 5px 10px;
+    border: 1px solid #337ab7;
+    border-radius: 3px;
+    margin: 0 auto;
+    display: block;
+}
+
+#reset-database button:hover {
+    background-color: #286090;
+}
+
+#reset-database h2 {
+    text-align: center;
+}
+
+#reset-database #message {
+    margin-top: 15px;
+    color: #337ab7;
+}
+

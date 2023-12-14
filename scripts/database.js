@@ -15,8 +15,9 @@ export class DatabaseManager {
     });
   }
 
-  findProduct(id, callback) {
-    this.db.find({ id: id }, (findErr, document) => {
+  // find a product by its name and return it
+  findProductByName(name, callback) {
+    this.db.findOne({ name: name }, (findErr, document) => {
       if (findErr) {
         console.error(findErr);
       } else {

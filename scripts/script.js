@@ -1,5 +1,5 @@
 import { DatabaseManager } from './database.js';
-import { Product } from './product.js';
+import { Product, Question, Option } from './product.js';
 
 const db = new DatabaseManager();
 
@@ -35,15 +35,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const productQuestions = Array.from(document.getElementsByName('productQuestion[]')).map(input => input.value);
     const productOptions = Array.from(document.getElementsByName('productOption[]')).map(input => input.value);
 
-    // Create an array of questions and options
-    const questions = productQuestions.map((question, index) => ({
-      id: index + 1,
-      text: question,
-      options: productOptions.map((option, optionIndex) => ({
-        id: optionIndex + 1,
-        text: option
-      }))
-    }));
+    // Create an array of Question instances
+    const questions = productQuestions.map((question, index) => {
+      const options = productOptions.slice(index * 3, (index * 3) + 3).map((option, index) => new Option(index + 1, option));
+      return new Question(index + 1, question, options);
+    });
 
     // Get the next available ID for the new product
     db.getNumberOfElements((count) => {

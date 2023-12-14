@@ -28,7 +28,7 @@ export class Product {
 
 }
 
-class Question {
+export class Question {
 	constructor(id, text, options = []) {
 		this.id = id;
 		this.text = text;
@@ -42,7 +42,7 @@ class Question {
 	}
 }
 
-class Option {
+export class Option {
 	constructor(id, text) {
 		this.id = id;
 		this.text = text;

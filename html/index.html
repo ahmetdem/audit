@@ -17,7 +17,7 @@
         <label for="productName">Product Name:</label>
         <input type="text" id="productName" name="productName" required>
       </div>
-  
+
       <div id="questionsContainer" class="form-group">
         <label for="productQuestion">Product Questions:</label>
         <div id="questionInputs">
@@ -25,7 +25,7 @@
         </div>
         <button type="button" id="addQuestionButton">Add Question</button>
       </div>
-  
+
       <div id="optionsContainer" class="form-group">
         <label for="productOption">Product Options:</label>
         <div id="optionInputs">
@@ -33,9 +33,9 @@
         </div>
         <button type="button" id="addOptionButton">Add Option</button>
       </div>
-  
+
       <br>
-  
+
       <button type="button" id="addProductButton">Add Product</button>
     </form>
     <p id="message"></p>
@@ -58,7 +58,23 @@
     <button type="button" id="resetDatabaseButton">Reset Database</button>
   </div>
 
+  <div id="form-container" class="form-container">
+    <div class="form-control">
+      <label for="urun-adi">Ürün adı</label>
+      <input type="text" id="urun-adi" placeholder="Ürün adı">
+    </div>
+
+    <div id="questions-container" class="questions-container">
+      <!-- Questions will be dynamically added here -->
+    </div>
+
+    <button id="form-buttons" type="button" class="add-question-button">Soru Ekle</button>
+    <button id="form-buttons" type="button" class="display-button">Göster</button>
+  </div>
+
   <script type="module" src="../scripts/script.js"></script>
+  <script type="module" src="../scripts/form.js"></script>
+
 </body>
 
 </html>

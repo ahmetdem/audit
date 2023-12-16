@@ -37,6 +37,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const productQuestions = Array.from(document.getElementsByName('productQuestion[]')).map(input => input.value);
     const productOptions = Array.from(document.getElementsByName('productOption[]')).map(input => input.value);
 
+    // trim the values
+    productName.trim();
+    productQuestions.forEach(question => question.trim());
+    productOptions.forEach(option => option.trim());
+
     // Create an array of Question instances
     const questions = productQuestions.map((question, index) => {
       const options = productOptions.slice(index * 3, (index * 3) + 3).map((option, index) => new Option(index + 1, option));
@@ -55,6 +60,8 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   });
+
+
 
   resetDatabaseButton.addEventListener('click', function () {
     db.resetDatabase();

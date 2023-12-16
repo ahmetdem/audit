@@ -178,3 +178,114 @@ h1, h2 {
     color: #337ab7;
 }
 
+#form-container {
+    width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.product-name {
+	font-size: 1.5em;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.form-control {
+	margin-bottom: 20px;
+}
+
+label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+input {
+	width: 100%;
+	padding: 8px;
+	margin-bottom: 10px;
+	box-sizing: border-box;
+	user-select: text;
+}
+
+.options-container {
+	width: 100%;
+	max-width: 400px;
+	/* Adjust as needed */
+	margin-top: 10px;
+}
+
+.option-input {
+	width: calc(70% - 5px);
+	/* Adjust as needed */
+	padding: 5px;
+	margin-bottom: 5px;
+	box-sizing: border-box;
+	display: inline-block;
+	/* Added to make elements appear side by side */
+}
+
+.add-option-button,
+.remove-option-button {
+	width: calc(15% - 5px);
+	/* Adjust as needed */
+	padding: 5px;
+	cursor: pointer;
+	box-sizing: border-box;
+	display: inline-block;
+	/* Added to make elements appear side by side */
+}
+
+.add-option-button,
+.remove-question-button {
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+}
+
+.remove-option-button,
+.remove-question-button {
+	background-color: #f44336;
+}
+
+.add-option-button:hover,
+.remove-option-button:hover,
+.add-question-button:hover,
+.remove-question-button:hover {
+	background-color: #ff0000;
+}
+
+.add-question-button,
+.display-button {
+	width: calc(50% - 5px);
+	/* Adjust as needed */
+	padding: 5px;
+	cursor: pointer;
+	box-sizing: border-box;
+	display: inline-block;
+	/* Added to make elements appear side by side */
+	margin-bottom: 10px;
+}
+
+.add-question-button {
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+}
+
+.add-question-button:hover {
+	background-color: #ff0000;
+}
+
+.display-button {
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+}
+
+.display-button:hover {
+	background-color: #ff0000;
+}
+

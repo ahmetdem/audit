@@ -1,23 +1,25 @@
+// main.js
 const { app, BrowserWindow } = require('electron');
-const path = require('path');
 
-function createWindow () {
-  const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+let mainWindow;
+
+function createWindow() {
+  mainWindow = new BrowserWindow({
+    width: 1200,
+    height: 800,
     minWidth: 400,
     minHeight: 300,
     titleBarStyle: 'hidden',
-
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
-    }
+    },
   });
-  win.loadFile('../html/index.html');
+
+  mainWindow.loadFile('../html/index.html');
 }
 
-app.on('ready', createWindow);
+app.whenReady().then(createWindow);
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {

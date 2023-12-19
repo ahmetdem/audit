@@ -1,3 +1,6 @@
+import { Product, Question, Option } from './product.js';
+import { db } from './script.js';
+
 document.addEventListener('DOMContentLoaded', function () {
 
 	const addQuestionButton = document.querySelector('.add-question-button');
@@ -63,24 +66,31 @@ document.addEventListener('DOMContentLoaded', function () {
 		if ( allFilled ) {
 			const questionsContainer = document.getElementById('questions-container');
 			const questions = questionsContainer.querySelectorAll('.form-control');
-			const questionsArray = [];
+			const productName = document.getElementById('product-name').value;
 
-			questions.forEach(function (question) {
-				const questionText = question.querySelector('input[type="text"]').value;
-				const options = question.querySelectorAll('.option-input');
-				const optionsArray = [];
+			// get the id by adding 1 to the number of elements in the database
+			db.getNumberOfElements().then((count) => {
+				const productID = count + 1;
+				const product = new Product(productID, productName);
 
-				options.forEach(function (option) {
-					optionsArray.push(option.value);
+				questions.forEach(function (question) {
+					const questionText = question.querySelector('input[type="text"]').value;
+					const options = question.querySelectorAll('.option-input');
+					let o_id = 0; let q_id = 0;
+
+					let q = new Question(q_id++, questionText);
+					options.forEach(function (option) {
+						q.addOption(new Option(o_id++, option.value));
+					});
+
+					product.addQuestion(q);
 				});
 
-				questionsArray.push({
-					question: questionText,
-					options: optionsArray,
+				db.insertProduct(product, function (newDocument) {
+					console.log(newDocument);
 				});
 			});
-
-			console.log(questionsArray);
+			
 		} else {
 			alert('Lütfen tüm alanları doldurunuz!');
 		}

@@ -9,38 +9,20 @@
 </head>
 
 <body>
-
-  <div id="add-product">
-    <h1>Product Manager</h1>
-    <form id="productForm">
-      <div class="form-group">
-        <label for="productName">Product Name:</label>
-        <input type="text" id="productName" name="productName" required>
-      </div>
-
-      <div id="questionsContainer" class="form-group">
-        <label for="productQuestion">Product Questions:</label>
-        <div id="questionInputs">
-          <input type="text" name="productQuestion[]" required>
-        </div>
-        <button type="button" id="addQuestionButton">Add Question</button>
-      </div>
-
-      <div id="optionsContainer" class="form-group">
-        <label for="productOption">Product Options:</label>
-        <div id="optionInputs">
-          <input type="text" name="productOption[]" required>
-        </div>
-        <button type="button" id="addOptionButton">Add Option</button>
-      </div>
-
-      <br>
-
-      <button type="button" id="addProductButton">Add Product</button>
-    </form>
-    <p id="message"></p>
+  <div id="add-product" class="form-container">
+    <div class="form-control">
+      <label for="product-name">Ürün adı</label>
+      <input type="text" id="product-name" placeholder="Ürün adı">
+    </div>
+  
+    <div id="questions-container" class="questions-container">
+      <!-- Questions will be dynamically added here -->
+    </div>
+  
+    <button id="form-buttons" type="button" class="add-question-button">Soru Ekle</button>
+    <button id="form-buttons" type="button" class="display-button">Göster</button>
   </div>
-
+  
   <div id="get-product">
     <h2>Products</h2>
 
@@ -52,28 +34,27 @@
     </form>
   </div>
 
-
   <div id="reset-database">
     <h2>Reset Database</h2>
     <button type="button" id="resetDatabaseButton">Reset Database</button>
   </div>
 
-  <div id="form-container" class="form-container">
-    <div class="form-control">
-      <label for="urun-adi">Ürün adı</label>
-      <input type="text" id="urun-adi" placeholder="Ürün adı">
-    </div>
-
-    <div id="questions-container" class="questions-container">
-      <!-- Questions will be dynamically added here -->
-    </div>
-
-    <button id="form-buttons" type="button" class="add-question-button">Soru Ekle</button>
-    <button id="form-buttons" type="button" class="display-button">Göster</button>
+  <div id="search-container">
+    <input type="text" id="search-input" placeholder="Type your search">
+    <button id="search-button">Search</button>
+    <ul id="search-results"></ul>
   </div>
+
+  <div id="product-info">
+    <h3>Product Information</h3>
+    <p id="product-description"></p>
+  </div>
+
+  <div id="message-container"></div>
 
   <script type="module" src="../scripts/script.js"></script>
   <script type="module" src="../scripts/form.js"></script>
+  <script type="module" src="../scripts/search.js"></script>
 
 </body>
 

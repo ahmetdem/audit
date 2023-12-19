@@ -21,9 +21,8 @@ export class Product {
      * @method
      * @param {Object} question - An object representing the question to be added.
      */
-    addQuestion(question) {
-        const newQuestion = new Question(question.id, question.text, question.options);
-        this.questions.push(newQuestion);
+    addQuestion(questions) {
+        this.questions.push(questions);
     }
 
     /**
@@ -52,9 +51,10 @@ export class Product {
 export class Question {
     /**
      * Constructor to initialize a Question.
-     * @constructor
+     * @constructor 
      * @param {number} id - The unique identifier for the question.
      * @param {string} text - The text of the question.
+     * @param {Array} options - An array of option objects associated with the question. Defaults to an empty array.
      */
     constructor(id, text) {
         this.id = id;
@@ -68,8 +68,7 @@ export class Question {
      * @param {Object} option - An object representing the option to be added.
      */
     addOption(option) {
-        const newOption = new Option(option.id, option.text);
-        this.options.push(newOption);
+        this.options.push(option);
     }
 }
 

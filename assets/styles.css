@@ -7,7 +7,8 @@ body {
     background-color: #f2f2f2;
 }
 
-h1, h2 {
+h1,
+h2 {
     text-align: center;
 }
 
@@ -188,104 +189,172 @@ h1, h2 {
 }
 
 .product-name {
-	font-size: 1.5em;
-	font-weight: bold;
-	margin-bottom: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .form-control {
-	margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 label {
-	display: block;
-	margin-bottom: 5px;
+    display: block;
+    margin-bottom: 5px;
 }
 
 input {
-	width: 100%;
-	padding: 8px;
-	margin-bottom: 10px;
-	box-sizing: border-box;
-	user-select: text;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    user-select: text;
 }
 
 .options-container {
-	width: 100%;
-	max-width: 400px;
-	/* Adjust as needed */
-	margin-top: 10px;
+    width: 100%;
+    max-width: 400px;
+    /* Adjust as needed */
+    margin-top: 10px;
 }
 
 .option-input {
-	width: calc(70% - 5px);
-	/* Adjust as needed */
-	padding: 5px;
-	margin-bottom: 5px;
-	box-sizing: border-box;
-	display: inline-block;
-	/* Added to make elements appear side by side */
+    width: calc(70% - 5px);
+    /* Adjust as needed */
+    padding: 5px;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    display: inline-block;
+    /* Added to make elements appear side by side */
 }
 
 .add-option-button,
 .remove-option-button {
-	width: calc(15% - 5px);
-	/* Adjust as needed */
-	padding: 5px;
-	cursor: pointer;
-	box-sizing: border-box;
-	display: inline-block;
-	/* Added to make elements appear side by side */
+    width: calc(15% - 5px);
+    /* Adjust as needed */
+    padding: 5px;
+    cursor: pointer;
+    box-sizing: border-box;
+    display: inline-block;
+    /* Added to make elements appear side by side */
 }
 
 .add-option-button,
 .remove-question-button {
-	background-color: #4CAF50;
-	color: white;
-	border: none;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
 }
 
 .remove-option-button,
 .remove-question-button {
-	background-color: #f44336;
+    background-color: #f44336;
 }
 
 .add-option-button:hover,
 .remove-option-button:hover,
 .add-question-button:hover,
 .remove-question-button:hover {
-	background-color: #ff0000;
+    background-color: #ff0000;
 }
 
 .add-question-button,
 .display-button {
-	width: calc(50% - 5px);
-	/* Adjust as needed */
-	padding: 5px;
-	cursor: pointer;
-	box-sizing: border-box;
-	display: inline-block;
-	/* Added to make elements appear side by side */
-	margin-bottom: 10px;
+    width: calc(50% - 5px);
+    /* Adjust as needed */
+    padding: 5px;
+    cursor: pointer;
+    box-sizing: border-box;
+    display: inline-block;
+    /* Added to make elements appear side by side */
+    margin-bottom: 10px;
 }
 
 .add-question-button {
-	background-color: #4CAF50;
-	color: white;
-	border: none;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
 }
 
 .add-question-button:hover {
-	background-color: #ff0000;
+    background-color: #ff0000;
 }
 
 .display-button {
-	background-color: #4CAF50;
-	color: white;
-	border: none;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
 }
 
 .display-button:hover {
-	background-color: #ff0000;
+    background-color: #ff0000;
 }
 
+/* 
+<div id="search-container">
+    <input type="text" id="search-input" placeholder="Type your search">
+    <button id="search-button">Search</button>
+    <ul id="search-results"></ul>
+  </div>
+
+  <div id="product-info">
+    <h3>Product Information</h3>
+    <p id="product-description"></p>
+  </div>
+    style this div, make ul a list, make li a list item and style it pretty */
+
+/* Style for the search container */
+#search-container {
+    width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+#search-button {
+    padding: 8px;
+    border: 1px solid #007BFF;
+    background-color: #007BFF;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* Style for the product information container */
+#product-info {
+    width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;     
+}
+
+#product-description {
+    font-size: 16px;
+}
+
+/* Style for the search results list */
+#search-results {
+    list-style-type: none;
+    padding: 0;
+}
+
+#search-results li {
+    margin: 5px 0;
+    padding: 8px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+#message-container {
+    width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}

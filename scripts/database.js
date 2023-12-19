@@ -5,7 +5,7 @@ export class DatabaseManager {
     this.db = new Datastore({ filename: './database/database.db', autoload: true });
   }
 
-  insertProduct(product, callback) {
+  insertProduct = (product, callback = () => {}) => {
     this.db.insert(product, (insertErr, newDocument) => {
       if (insertErr) {
         console.error(insertErr);
@@ -15,45 +15,67 @@ export class DatabaseManager {
     });
   }
 
-  // find a product by its name and return it
-  findProductByName(name, callback) {
+  // find product by name and return it
+  findProductByName(name, callback = () => {}) {
     this.db.findOne({ name: name }, (findErr, document) => {
       if (findErr) {
         console.error(findErr);
       } else {
-        callback(document ? document : null);
+        callback(document);
       }
     });
   }
 
-  getAllElements(callback) {
-    this.db.find({}, (findErr, document) => {
+  findAllProducts(callback = () => {}) {
+    this.db.find({}, (findErr, documents) => {
       if (findErr) {
         console.error(findErr);
       } else {
-        callback(document ? document : null);
+        callback(documents);
       }
     });
   }
 
-  resetDatabase() {
+  resetDatabase(callback = () => {} ) {
     this.db.remove({}, { multi: true }, function (err, numRemoved) {
       if (err) {
         console.error(err);
+      } else {
+        callback(numRemoved);
       }
     });
   }
 
-  getNumberOfElements(callback) {
-    this.db.count({}, (countErr, count) => {
-      if (countErr) {
-        console.error(countErr);
+  getNumberOfElements() {
+    return new Promise((resolve, reject) => {
+      this.db.count({}, (err, count) => {
+        if (err) {
+          console.error(err);
+          reject(err);
+        } else {
+          resolve(count);
+        }
+      });
+    });
+  }  
+
+  updateProduct(product, callback = () => {}) {
+    this.db.update({ _id: product._id }, product, {}, (updateErr, numReplaced) => {
+      if (updateErr) {
+        console.error(updateErr);
       } else {
-        callback(count);
+        callback(numReplaced);
+      }
+    });
+  }
+
+  deleteProduct(product, callback = () => {}) {
+    this.db.remove({ _id: product._id }, {}, (removeErr, numRemoved) => {
+      if (removeErr) {
+        console.error(removeErr);
+      } else {
+        callback(numRemoved);
       }
     });
   }
 }
-
-export default DatabaseManager;
-

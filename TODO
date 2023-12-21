@@ -1,3 +1,4 @@
-Add the functionality to add Options for each question.
+- Create a company class and store it inside a database. 
 
-Create a database company 
+- Find Which one is suitable, new database for companies and storing products inside 
+them or storing companies inside products.   

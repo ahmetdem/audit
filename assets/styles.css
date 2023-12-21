@@ -290,20 +290,6 @@ input {
     background-color: #ff0000;
 }
 
-/* 
-<div id="search-container">
-    <input type="text" id="search-input" placeholder="Type your search">
-    <button id="search-button">Search</button>
-    <ul id="search-results"></ul>
-  </div>
-
-  <div id="product-info">
-    <h3>Product Information</h3>
-    <p id="product-description"></p>
-  </div>
-    style this div, make ul a list, make li a list item and style it pretty */
-
-/* Style for the search container */
 #search-container {
     width: 500px;
     margin: 0 auto;
@@ -357,4 +343,79 @@ input {
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #fff;
+}
+
+
+/*  <div id="add-company">
+    <h2>Add Company</h2>
+    <form id="add-company-form">
+      <label for="company-Id">ID:</label>
+      <input type="text" id="company-id" name="company-id" required>
+      <br>
+      <label for="company-Nname">Name:</label>
+      <input type="text" id="company-Nname" name="company-Nname" required>
+      <br>
+      <label for="company-address">Address:</label>
+      <input type="text" id="company-address" name="company-address" required>
+      <br>
+      <label for="company-mail-address">Mail Address:</label>
+      <input type="email" id="company-mail-address" name="company-mail-address" required>
+      <br>
+      <label for="company-fax-number">Fax Number:</label>
+      <input type="text" id="company-fax-number" name="company-fax-number" required>
+      <br>
+      <label for="company-tax-number">Tax Number:</label>
+      <input type="text" id="company-tax-number" name="company-tax-number" required>
+      <br>
+      <label for="company-products">Products:</label>
+      <input type="text" id="company-products" name="company-products" required>
+      <br>
+      <button type="button" id="add-company-Button">Add company-</button>
+    </form>
+  </div>
+  
+  
+  write style for this one*/
+
+#add-company {
+    width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+#add-company form {
+    display: flex;
+    flex-direction: column;
+}
+
+#add-company form .form-group {
+    margin-bottom: 15px;
+}
+
+#add-company form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#add-company form input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+#add-company form button {
+    cursor: pointer;
+    background-color: #337ab7;
+    color: #fff;
+    padding: 5px 10px;
+    border: 1px solid #337ab7;
+    border-radius: 3px;
+}
+
+#add-company form button:hover {
+    background-color: #286090;
 }

@@ -1,4 +1,5 @@
-import { db } from './script.js';
+import { db } from './database.js';
+import { displayQuestionsAndOptions } from './display.js';
 
 let allProducts = [];
 
@@ -10,9 +11,6 @@ function fetchProducts(searchInput) {
 async function showResults() {
 	var searchInput = document.getElementById('search-input').value.toLowerCase();
 	var searchResults = document.getElementById('search-results');
-	var productInfo = document.getElementById('product-info');
-	var productDescription = document.getElementById('product-description');
-
 	// Fetch products from the client-side based on the search input
 	var filteredOptions = fetchProducts(searchInput);
 
@@ -24,16 +22,6 @@ async function showResults() {
 		var listItem = document.createElement('li');
 		listItem.className = 'result-item';
 		listItem.textContent = filteredOptions[i].name;
-
-		// Attach a click event listener to each result button
-		listItem.addEventListener('click', function () {
-			// Display product information when a result is clicked
-			var clickedProduct = allProducts.find(product => product.name === this.textContent);
-			if (clickedProduct) {
-				productDescription.textContent = clickedProduct.description;
-				productInfo.style.display = 'block';
-			}
-		});
 
 		searchResults.appendChild(listItem);
 	}
@@ -74,9 +62,9 @@ function handleResultClick(event) {
 
 // Function to display details of the selected product
 function displayProductDetails(productName) {
-	// Here, you can fetch additional details about the product
-	// For demonstration purposes, let's just show an alert with the product name
-	alert('Selected Product: ' + productName);
+	// display the product questions and options using the displayQuestionsAndOptions function
+	var selectedProduct = allProducts.find(product => product.name === productName);
+	displayQuestionsAndOptions(selectedProduct);
 }
 
 function setAllProducts() {

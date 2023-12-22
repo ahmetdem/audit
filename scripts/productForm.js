@@ -1,5 +1,5 @@
 import { Product, Question, Option } from './product.js';
-import { db } from './script.js';
+import { db } from './database.js';
 
 document.addEventListener('DOMContentLoaded', function () {
 

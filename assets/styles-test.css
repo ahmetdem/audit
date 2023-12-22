@@ -1,0 +1,92 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+#questions-container {
+	width: 500px;
+	margin: 0 auto;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background-color: #fff;
+}
+
+.question-container p {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.options-container {
+    margin-left: 20px;
+}
+
+.options-container p {
+    border-bottom: 1px solid #ccc;
+    padding: 8px 0;
+    transition: background-color 0.3s ease;
+}
+
+.options-container p:last-child {
+    border-bottom: none; /* Remove border from the last option */
+}
+
+.options-container p:hover {
+    background-color: #f0f0f0;
+	
+}
+
+
+/* style for search-container and product info */
+#search-container {
+	width: 500px;
+	margin: 0 auto;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background-color: #fff;
+}
+
+#search-container:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+#search-input {
+    width: 70%;
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+#search-button {
+    cursor: pointer;
+    background-color: #337ab7;
+    color: #fff;
+    padding: 8px 12px;
+    border: 1px solid #337ab7;
+    border-radius: 3px;
+}
+
+#search-button:hover {
+    background-color: #286090;
+}
+
+#search-results {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+#search-results li {
+    border-bottom: 1px solid #ccc;
+    padding: 8px 0;
+    transition: background-color 0.3s ease;
+}
+
+#search-results li:hover {
+    background-color: #f0f0f0;
+}

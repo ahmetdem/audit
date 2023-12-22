@@ -1,7 +1,5 @@
-import { DatabaseManager } from './database.js';
 import { Product } from './product.js';
-
-export const db = new DatabaseManager();
+import { db } from './database.js';
 
 document.addEventListener('DOMContentLoaded', function () {
 

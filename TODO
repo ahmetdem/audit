@@ -2,3 +2,9 @@
 
 - Find Which one is suitable, new database for companies and storing products inside 
 them or storing companies inside products.   
+
+-Find a way to check if all the questions are answered.
+
+-Load Products again only if A new product is added.
+
+-Fix the id problem.

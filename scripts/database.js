@@ -1,4 +1,5 @@
 const Datastore = require('nedb');
+import { Product, Question, Option } from './product.js';
 
 export class DatabaseManager {
   constructor() {

@@ -2,6 +2,7 @@ import { db } from './database.js';
 import { displayQuestionsAndOptions } from './display.js';
 
 let allProducts = [];
+let productsLoaded = false;
 
 function fetchProducts(searchInput) {
 	// Simulating server-side logic with client-side filtering
@@ -11,13 +12,18 @@ function fetchProducts(searchInput) {
 async function showResults() {
 	var searchInput = document.getElementById('search-input').value.toLowerCase();
 	var searchResults = document.getElementById('search-results');
+
+	if (!productsLoaded) {
+        await setAllProducts();
+    }
+
 	// Fetch products from the client-side based on the search input
 	var filteredOptions = fetchProducts(searchInput);
 
 	// Clear previous results
 	searchResults.innerHTML = '';
 
-	// Display up to 5 filtered results as clickable buttons
+	// Display up to 5 filtered results as clickable buttons and sort them alphabetically
 	for (var i = 0; i < Math.min(filteredOptions.length, 5); i++) {
 		var listItem = document.createElement('li');
 		listItem.className = 'result-item';
@@ -30,9 +36,7 @@ async function showResults() {
 	searchResults.style.display = 'block';
 }
 
-const searchButton = document.getElementById('search-button');
 const searchInput = document.getElementById('search-input');
-searchButton.addEventListener('click', showResults);
 
 // Event listener for real-time updates
 searchInput.addEventListener('input', function () {
@@ -40,7 +44,7 @@ searchInput.addEventListener('input', function () {
 });
 
 searchInput.addEventListener('focus', function () {
-	setAllProducts();
+	showResults();
 });
 
 // Event listener to close results when clicking outside the search container
@@ -68,10 +72,14 @@ function displayProductDetails(productName) {
 }
 
 function setAllProducts() {
-	db.findAllProducts((products) => {
-		allProducts = products;
-		console.log(allProducts);
-	});
+    return new Promise((resolve) => {
+        db.findAllProducts((products) => {
+            allProducts = products;
+            productsLoaded = true;
+            console.log(allProducts);
+            resolve();  // Resolve the promise once products are loaded
+        });
+    });
 }
 
 // Event listener for real-time updates

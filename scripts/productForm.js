@@ -72,11 +72,12 @@ document.addEventListener('DOMContentLoaded', function () {
 			db.getNumberOfElements().then((count) => {
 				const productID = count + 1;
 				const product = new Product(productID, productName);
+				let q_id = 0
 
 				questions.forEach(function (question) {
 					const questionText = question.querySelector('input[type="text"]').value;
 					const options = question.querySelectorAll('.option-input');
-					let o_id = 0; let q_id = 0;
+					let o_id = 0;
 
 					let q = new Question(q_id++, questionText);
 					options.forEach(function (option) {

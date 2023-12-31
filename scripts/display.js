@@ -15,6 +15,7 @@ export function displayQuestionsAndOptions(product) {
     product.questions.forEach(question => {
         const questionContainer = document.createElement('div');
         questionContainer.classList.add('question-container');
+        questionContainer.id = question.id; // Set the id of the questionContainer
 
         const questionElement = document.createElement('p');
         questionElement.textContent = question.text;
@@ -69,20 +70,58 @@ document.addEventListener('DOMContentLoaded', function () {
         // Check if all questions are answered 
         let allQuestionsAnswered = true;
 
-        // FIXME 
         g_Product.questions.forEach(question => {
-            if (!selectedOptions[question.id]) {
+
+            if (!selectedOptions.hasOwnProperty(question.id)) {
                 allQuestionsAnswered = false;
+
+                // Highlight the unanswered question by accessing the question container element
+                const questionElement = document.getElementById(question.id);
+                if (questionElement) {
+                    questionElement.style.backgroundColor = 'red';
+                }
             }
         });
 
-        console.log("allQuestionsAnswered", allQuestionsAnswered);
+        if (!allQuestionsAnswered) {
+            alert('Lütfen tüm soruları cevaplayın.\nCevaplanmayan sorular kırmızı renkte gösterilecektir.');
+            return;
+        }  
 
-        if (allQuestionsAnswered) {
-            console.log("All questions are answered. Selected options:", selectedOptions);
-        } else {
-            console.error("Not all questions are answered. Please answer all questions.");
-            console.log("Selected options:", selectedOptions);
+        // reset the color of the questions
+        g_Product.questions.forEach(question => {
+            const questionElement = document.getElementById(question.id);
+            if (questionElement) {
+                questionElement.style.backgroundColor = '';
+            }
+        });
+
+        console.log(selectedOptions);
+
+        // Check if the answers are correct
+        let allAnswersCorrect = true;
+
+        g_Product.questions.forEach(question => {
+            const selectedOptionId = selectedOptions[question.id];
+            const selectedOption = question.options.find(option => option.id === selectedOptionId);
+            if (!selectedOption.isTrue) {
+                allAnswersCorrect = false;
+            }
+        });
+
+        if (!allAnswersCorrect) {
+            alert('Cevaplarınız doğru değil.\nYanlış cevaplar kırmızı renkte gösterilecektir.');
+            // log the wrong answers
+            g_Product.questions.forEach(question => {
+                const selectedOptionId = selectedOptions[question.id];
+                const selectedOption = question.options.find(option => option.id === selectedOptionId);
+                if (!selectedOption.isTrue) {
+                    console.log(`Question: ${question.text}, Answer: ${selectedOption.text}`);
+                }
+            });
+
+
+            return;
         }
     });
 });

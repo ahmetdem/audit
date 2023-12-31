@@ -32,20 +32,28 @@ document.addEventListener('DOMContentLoaded', function () {
 			newOptionInput.classList.add('option-input');
 			newOptionInput.placeholder = 'Seçenek';
 			newOptionInput.required = true;
-
+		
+			const isTrueRadio = document.createElement('input');
+			isTrueRadio.type = 'radio';
+			isTrueRadio.classList.add('is-true-radio');
+			isTrueRadio.name = `is-true-${questionNumber}`;
+		
 			const removeOptionButton = document.createElement('button');
 			removeOptionButton.type = 'button';
 			removeOptionButton.classList.add('remove-option-button');
 			removeOptionButton.textContent = '-';
-
+		
 			removeOptionButton.addEventListener('click', function () {
 				newOptionInput.remove();
+				isTrueRadio.remove();
 				removeOptionButton.remove();
 			});
-
+		
 			optionsContainer.appendChild(newOptionInput);
+			optionsContainer.appendChild(isTrueRadio);
 			optionsContainer.appendChild(removeOptionButton);
 		});
+		
 
 		removeQuestionButton.addEventListener('click', function () {
 			newQuestionControl.remove();
@@ -80,8 +88,10 @@ document.addEventListener('DOMContentLoaded', function () {
 					let o_id = 0;
 
 					let q = new Question(q_id++, questionText);
-					options.forEach(function (option) {
-						q.addOption(new Option(o_id++, option.value));
+					options.forEach(function (option, index) {
+						const isTrueCheckbox = question.querySelectorAll('.is-true-radio')[index];
+						const isTrue = isTrueCheckbox.checked;
+						q.addOption(new Option(o_id++, option.value, isTrue));
 					});
 
 					product.addQuestion(q);

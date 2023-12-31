@@ -82,10 +82,12 @@ export class Option {
      * @constructor
      * @param {number} id - The unique identifier for the option.
      * @param {string} text - The text of the option.
+     * @param {boolean} isTrue - If the option is True
      */
-    constructor(id, text) {
+    constructor(id, text, isTrue = false) {
         this.id = id;
         this.text = text;
+        this.isTrue = isTrue;
     }
 }
 

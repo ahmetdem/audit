@@ -4,7 +4,7 @@ import { selectedProducts } from './c_p_search.js';
 
 document.addEventListener('DOMContentLoaded', function () {
 	const addCompanyButton = document.querySelector('.add-company-button');
-	const inputsInsideFormContainer = document.querySelectorAll('#company-form-container > input');
+	const inputsInsideFormContainer = document.querySelectorAll('#add-company-form input:not(#search-for-company-products-input)');
 
 	addCompanyButton.addEventListener('click', function () {
 		let allFilled = true;
@@ -30,11 +30,11 @@ document.addEventListener('DOMContentLoaded', function () {
 					console.log('New company added to database: ', newDocument);
 				});
 
+				selectedProducts.length = 0;
+
 				inputsInsideFormContainer.forEach(function (input) {
 					input.value = '';
 				});
-
-				selectedProducts.length = 0;
 			});
 
 		} else {

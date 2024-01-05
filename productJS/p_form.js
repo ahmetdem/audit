@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	const addQuestionButton = document.querySelector('.add-question-button');
 	const displayButton = document.querySelector('.display-button');
-	const inputsInsideFormContainer = document.querySelectorAll('#form-container > input');
 
 	addQuestionButton.addEventListener('click', function () {
 		const questionsContainer = document.getElementById('questions-container');
@@ -32,59 +31,73 @@ document.addEventListener('DOMContentLoaded', function () {
 			newOptionInput.classList.add('option-input');
 			newOptionInput.placeholder = 'Seçenek';
 			newOptionInput.required = true;
-		
+
 			const isTrueRadio = document.createElement('input');
 			isTrueRadio.type = 'radio';
 			isTrueRadio.classList.add('is-true-radio');
 			isTrueRadio.name = `is-true-${questionNumber}`;
-		
+
 			const removeOptionButton = document.createElement('button');
 			removeOptionButton.type = 'button';
 			removeOptionButton.classList.add('remove-option-button');
 			removeOptionButton.textContent = '-';
-		
+
 			removeOptionButton.addEventListener('click', function () {
 				newOptionInput.remove();
 				isTrueRadio.remove();
 				removeOptionButton.remove();
 			});
-		
+
 			optionsContainer.appendChild(newOptionInput);
 			optionsContainer.appendChild(isTrueRadio);
 			optionsContainer.appendChild(removeOptionButton);
 		});
-		
+
 
 		removeQuestionButton.addEventListener('click', function () {
 			newQuestionControl.remove();
 		});
 	});
-	
+
 	displayButton.addEventListener('click', function () {
+		const inputsInsideFormContainer = document.querySelectorAll('.form-container input');
 		let allFilled = true;
 
 		inputsInsideFormContainer.forEach(function (input) {
-			if ( input.value === '' ) {
+			if (input.value === '') {
 				allFilled = false;
 			}
 
 			input.value = input.value.trim();
 		});
 
-		if ( allFilled ) {
+		if (allFilled) {
 			const questionsContainer = document.getElementById('questions-container');
 			const questions = questionsContainer.querySelectorAll('.form-control');
 			const productName = document.getElementById('product-name').value;
 
-			// get the id by adding 1 to the number of elements in the database
+			if (questions.length === 0) {
+				alert('Lütfen en az bir soru ekleyiniz!');
+				return;
+			}
+
+			let validInput = true; // Flag to track the validity of options
+
 			p_db.getNumberOfElements().then((count) => {
 				const productID = count + 1;
 				const product = new Product(productID, productName);
-				let q_id = 0
+				let q_id = 0;
 
 				questions.forEach(function (question) {
 					const questionText = question.querySelector('input[type="text"]').value;
 					const options = question.querySelectorAll('.option-input');
+
+					if (options.length < 2) {
+						alert('Lütfen her soru için en az iki seçenek ekleyiniz!');
+						validInput = false; // Set the flag to false if options are not valid
+						return; // Exit the forEach loop early
+					}
+
 					let o_id = 0;
 
 					let q = new Question(q_id++, questionText);
@@ -97,11 +110,19 @@ document.addEventListener('DOMContentLoaded', function () {
 					product.addQuestion(q);
 				});
 
+				// Check the flag before proceeding
+				if (!validInput) {
+					return;
+				}
+
 				p_db.insertProduct(product, function (newDocument) {
 					console.log(newDocument);
+					console.log('Product added successfully!');
 				});
+
+				// Additional code...
 			});
-			
+
 		} else {
 			alert('Lütfen tüm alanları doldurunuz!');
 		}

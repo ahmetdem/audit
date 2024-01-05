@@ -1,5 +1,5 @@
-import { db } from './database.js';
-import { displayQuestionsAndOptions } from './display.js';
+import { p_db } from './p_database.js';
+import { displayQuestionsAndOptions } from './p_display.js';
 
 let allProducts = [];
 let productsLoaded = false;
@@ -68,12 +68,13 @@ function handleResultClick(event) {
 function displayProductDetails(productName) {
 	// display the product questions and options using the displayQuestionsAndOptions function
 	var selectedProduct = allProducts.find(product => product.name === productName);
+	console.log(selectedProduct);
 	displayQuestionsAndOptions(selectedProduct);
 }
 
 function setAllProducts() {
     return new Promise((resolve) => {
-        db.findAllProducts((products) => {
+        p_db.findAllProducts((products) => {
             allProducts = products;
             productsLoaded = true;
             console.log(allProducts);

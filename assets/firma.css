@@ -1,0 +1,158 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+h1,
+h2 {
+    text-align: center;
+}
+
+#add-company {
+    width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+#add-company form {
+    display: flex;
+    flex-direction: column;
+}
+
+#add-company form .form-group {
+    margin-bottom: 15px;
+}
+
+#add-company form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#add-company form input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+#add-company form button {
+    cursor: pointer;
+    background-color: #337ab7;
+    color: #fff;
+    padding: 5px 10px;
+    border: 1px solid #337ab7;
+    border-radius: 3px;
+}
+
+#add-company form button:hover {
+    background-color: #286090;
+}
+
+/* style for search-container and product info */
+#search-container {
+	width: 500px;
+	margin: 0 auto;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background-color: #fff;
+}
+
+#search-container:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+#search-input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    user-select: text;
+}
+
+#search-results {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+#search-results li {
+    border-bottom: 1px solid #ccc;
+    padding: 8px 0;
+    transition: background-color 0.3s ease;
+}
+
+#search-results li:hover {
+    background-color: #f0f0f0;
+}
+
+#company-info-container {
+    width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+
+#products-search-container {
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+#search-for-company-products-input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    user-select: text;
+}
+
+#product-search-results {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+#product-search-results li {
+    border-bottom: 1px solid #ccc;
+    padding: 8px 0;
+    transition: background-color 0.3s ease;
+}
+
+#product-search-results li:hover {
+    background-color: #f0f0f0;
+}
+
+.result-item-product.selected-item {
+    background-color: #e0e0e0; 
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

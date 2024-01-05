@@ -1,4 +1,6 @@
 import { Company } from './company.js';
+import { c_db } from './c_database.js';
+import { selectedProducts } from './c_p_search.js';
 
 document.addEventListener('DOMContentLoaded', function () {
 	const addCompanyButton = document.querySelector('.add-company-button');
@@ -20,11 +22,23 @@ document.addEventListener('DOMContentLoaded', function () {
 			const companyFaxNum = document.getElementById('company-fax-number').value;
 			const companyTaxNum = document.getElementById('company-tax-number').value;
 
-			const company = new Company(0, companyName, companyAdress, companyMailAdress, companyFaxNum, companyTaxNum);
-			company.displayInfo();
+			c_db.getNumberOfElements().then((count) => {
+				const company = new Company(count + 1, companyName, companyAdress, 
+					companyMailAdress, companyFaxNum, companyTaxNum, [...selectedProducts]);
+				
+				c_db.insertCompany(company, function (newDocument) {
+					console.log('New company added to database: ', newDocument);
+				});
+
+				inputsInsideFormContainer.forEach(function (input) {
+					input.value = '';
+				});
+
+				selectedProducts.length = 0;
+			});
+
 		} else {
 			alert('Please fill all the inputs!');
 		}
-
 	});
 });

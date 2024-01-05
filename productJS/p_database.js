@@ -1,9 +1,8 @@
 const Datastore = require('nedb');
-import { Product, Question, Option } from './product.js';
 
 export class DatabaseManager {
   constructor() {
-    this.db = new Datastore({ filename: './database/database.db', autoload: true });
+    this.db = new Datastore({ filename: './database/products.db', autoload: true });
   }
 
   insertProduct = (product, callback = () => {}) => {
@@ -12,7 +11,7 @@ export class DatabaseManager {
         console.error(insertErr);
       } else {
         callback(newDocument);
-      }
+      } 
     });
   }
 
@@ -81,4 +80,4 @@ export class DatabaseManager {
   }
 }
 
-export const db = new DatabaseManager();
+export const p_db = new DatabaseManager();

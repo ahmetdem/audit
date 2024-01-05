@@ -1,1 +1,0 @@
-{"id":1,"name":"ahmet ","questions":[{"id":0,"text":"soru","options":[{"id":0,"text":"doğru","isTrue":true},{"id":1,"text":"yanlış","isTrue":false},{"id":2,"text":"asdas","isTrue":false}]},{"id":1,"text":"asdad","options":[{"id":0,"text":"asd","isTrue":false},{"id":1,"text":"ads","isTrue":false},{"id":2,"text":"doğru","isTrue":true}]}],"_id":"njc6DjrHUciphX3O"}

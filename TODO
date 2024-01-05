@@ -1,10 +1,10 @@
-- Create a company class and store it inside a database. 
-
 - Find Which one is suitable, new database for companies and storing products inside 
 them or storing companies inside products.   
 
--Find a way to check if all the questions are answered.
+- If product with the same name exists, do not add it. 
 
--Load Products again only if A new product is added.
+- Delete all the text after adding.
 
--Fix the id problem.
+- Make use of delete product and Update product. 
+
+- Fix the problem of adding empty products or companies to the database.

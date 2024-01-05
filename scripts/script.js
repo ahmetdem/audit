@@ -1,5 +1,5 @@
-import { Product } from './product.js';
-import { db } from './database.js';
+import { Product } from '../productJS/product.js';
+import { p_db } from '../productJS/p_database.js';
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -7,14 +7,14 @@ document.addEventListener('DOMContentLoaded', function () {
   const resetDatabaseButton = document.getElementById('resetDatabaseButton');
 
   resetDatabaseButton.addEventListener('click', function () {
-    db.resetDatabase();
+    p_db.resetDatabase();
     showMessage('Database was reset successfully!', 'green');
   });
 
   getProductButton.addEventListener('click', function () {
     const productName = document.getElementById('productNameToGet').value;
 
-    db.findProductByName(productName, (document) => {
+    p_db.findProductByName(productName, (document) => {
       if (document) {
         showMessage(`Product ${document.name} was found!`, 'green');
         const product = new Product(document.id, document.name, document.questions);

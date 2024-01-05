@@ -1,5 +1,5 @@
 import { Product, Question, Option } from './product.js';
-import { db } from './database.js';
+import { p_db } from './p_database.js';
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			const productName = document.getElementById('product-name').value;
 
 			// get the id by adding 1 to the number of elements in the database
-			db.getNumberOfElements().then((count) => {
+			p_db.getNumberOfElements().then((count) => {
 				const productID = count + 1;
 				const product = new Product(productID, productName);
 				let q_id = 0
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
 					product.addQuestion(q);
 				});
 
-				db.insertProduct(product, function (newDocument) {
+				p_db.insertProduct(product, function (newDocument) {
 					console.log(newDocument);
 				});
 			});

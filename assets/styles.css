@@ -345,49 +345,6 @@ input {
     background-color: #fff;
 }
 
-#add-company {
-    width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-}
-
-#add-company form {
-    display: flex;
-    flex-direction: column;
-}
-
-#add-company form .form-group {
-    margin-bottom: 15px;
-}
-
-#add-company form label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-#add-company form input[type="text"] {
-    width: 100%;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-}
-
-#add-company form button {
-    cursor: pointer;
-    background-color: #337ab7;
-    color: #fff;
-    padding: 5px 10px;
-    border: 1px solid #337ab7;
-    border-radius: 3px;
-}
-
-#add-company form button:hover {
-    background-color: #286090;
-}
-
 .options-container {
     width: 100%;
     max-width: 400px;

@@ -1,10 +1,5 @@
-- Find Which one is suitable, new database for companies and storing products inside 
-them or storing companies inside products.   
-
-- If product with the same name exists, do not add it. 
-
-- Delete all the text after adding.
-
 - Make use of delete product and Update product. 
 
-- Fix the problem of adding empty products or companies to the database.
+- Organize the code better and do not fucking create million search files.
+
+- FIXME: Changing values does not work.

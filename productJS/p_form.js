@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		if (allFilled) {
 			const questionsContainer = document.getElementById('questions-container');
 			const questions = questionsContainer.querySelectorAll('.form-control');
-			const productName = document.getElementById('product-name').value;
+			const productName = document.getElementById('product-name').value.trim();
 
 			if (questions.length === 0) {
 				alert('Lütfen en az bir soru ekleyiniz!');
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			p_db.getNumberOfElements().then((count) => {
 				const productID = count + 1;
 				const product = new Product(productID, productName);
-				let q_id = 0;
+				let q_id = 0; let hasTrueOption = false;
 
 				questions.forEach(function (question) {
 					const questionText = question.querySelector('input[type="text"]').value;
@@ -104,23 +104,38 @@ document.addEventListener('DOMContentLoaded', function () {
 					options.forEach(function (option, index) {
 						const isTrueCheckbox = question.querySelectorAll('.is-true-radio')[index];
 						const isTrue = isTrueCheckbox.checked;
+						hasTrueOption = hasTrueOption || isTrue;
+
 						q.addOption(new Option(o_id++, option.value, isTrue));
 					});
+
+					if (!hasTrueOption) {
+						alert('Lütfen her soru için en az bir doğru seçenek işaretleyiniz!');
+						validInput = false; // Set the flag to false if options are not valid
+						return; // Exit the forEach loop early
+					}
 
 					product.addQuestion(q);
 				});
 
-				// Check the flag before proceeding
-				if (!validInput) {
-					return;
-				}
+				console.log(p_db.isExistProductByName(productName));
 
-				p_db.insertProduct(product, function (newDocument) {
-					console.log(newDocument);
-					console.log('Product added successfully!');
+				p_db.isExistProductByName(productName).then((isExist) => {
+					if (isExist) {
+						alert('Bu ürün zaten var!');
+						return;
+					} else {
+						// Check the flag before proceeding
+						if (!validInput) {
+							return;
+						}
+
+						p_db.insertProduct(product, function (newDocument) {
+							console.log(newDocument);
+							console.log('Product added successfully!');
+						});
+					}
 				});
-
-				// Additional code...
 			});
 
 		} else {

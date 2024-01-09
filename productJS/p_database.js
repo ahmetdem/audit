@@ -26,6 +26,20 @@ export class DatabaseManager {
     });
   }
 
+  // find product by name and return true if it exists
+  isExistProductByName(name) {
+    return new Promise((resolve, reject) => {
+      this.db.findOne({ name: name }, (findErr, document) => {
+        if (findErr) {
+          console.error(findErr);
+          reject(findErr); // Reject the promise with the error
+        } else {
+          resolve(document !== null); // Resolve the promise with true if document exists, false otherwise
+        }
+      });
+    });
+  }
+
   findAllProducts(callback = () => {}) {
     this.db.find({}, (findErr, documents) => {
       if (findErr) {

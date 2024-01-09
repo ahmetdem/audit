@@ -1,5 +1,5 @@
 // main.js
-const { app, BrowserWindow, globalShortcut } = require('electron');
+const { app, BrowserWindow } = require('electron');
 
 let mainWindow;
 
@@ -15,6 +15,9 @@ function createWindow() {
       contextIsolation: false,
     },
   });
+
+  // open dev tools
+  mainWindow.webContents.openDevTools();
 
   mainWindow.loadFile('./html/index.html');
 

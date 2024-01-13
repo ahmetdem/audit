@@ -5,7 +5,7 @@
   "main": "main.js",
   "author": "Ahmet Yusuf Demir",
   "scripts": {
-    "start": "electron ./main.js"
+    "start": "electron scripts/main.js"
   },
   "dependencies": {
     "nedb": "^1.8.0"

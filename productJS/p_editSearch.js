@@ -2,7 +2,10 @@ import { p_db } from './p_database.js';
 import { displayQuestionsAndOptions } from './p_edit.js';
 
 let allProducts = [];
-let productsLoaded = false;
+
+export const productsState = {
+	productsLoaded: false
+};
 
 function fetchProducts(searchInput) {
 	// Simulating server-side logic with client-side filtering
@@ -13,7 +16,7 @@ async function showResults() {
 	var searchInput = document.getElementById('search-input').value.toLowerCase();
 	var searchResults = document.getElementById('search-results');
 
-	if (!productsLoaded) {
+	if (!productsState.productsLoaded) {
         await setAllProducts();
     }
 
@@ -75,7 +78,7 @@ function setAllProducts() {
     return new Promise((resolve) => {
         p_db.findAllProducts((products) => {
             allProducts = products;
-            productsLoaded = true;
+            productsState.productsLoaded = true;
             console.log(allProducts);
             resolve();  // Resolve the promise once products are loaded
         });

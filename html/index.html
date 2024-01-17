@@ -2,14 +2,80 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product Manager</title>
-  <link rel="stylesheet" href="../assets/styles.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Product Classes Questions</title>
+	<link rel="stylesheet" href="../assets/styles.css">
+	<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
+  <nav class="sidebar close">
+    <header>
+        <div class="text header-text">
+                <span class="name">Audit</span>
+             
+            </div>
+    </header>
 
+    <div class="menu-bar">
+        <div class="menu">
+            
+          <ul class="menu-links">
+            <li class="nav-link">
+                <a href="mainpage.html">
+                    <i class="bx bx-home-alt icon"></i>
+                    <span class="text nav-text">Ana Sayfa
+                    </span>
+                </a>
+            </li>
+            <li class="nav-link">
+                <a href="firma.html">
+                    <i class="bx bx-add-to-queue icon"></i>
+                    <span class="text nav-text">Firma Ekle</span>
+                </a>
+            </li>
+            
+            <li class="nav-link">
+                <a href="index.html">
+                    <i class="bx bx-add-to-queue icon"></i>
+                    <span class="text nav-text">Ürün Ekle</span>
+                </a>
+            </li>
+            
+            <li class="nav-link">
+                <a href="edit.html">
+                    <i class="bx bx-edit icon "></i>
+                    <span class="text nav-text">Editle</span>
+                </a>
+            </li>
+            </ul>
+        </div>
+
+        <div class="bottom-content">
+            <li class="">
+                <a href="mainpage.html">
+                    <i class="bx bx-arrow-back icon"></i>
+                    <span class="text nav-text">Geri</span>
+                </a>
+            </li>
+            
+            <li class="">
+                <a href="#">
+                    <i class="bx bx-log-out icon"></i>
+                    <span class="text nav-text">Çıkış</span>
+        
+
+                </a>
+            </li>
+        </div>
+
+    </div>
+</nav>
+
+
+
+<section class="home">
   <div id="message-container"></div>
 
   <div id="add-product" class="form-container">
@@ -19,14 +85,18 @@
     </div>
 
     <div id="questions-container" class="questions-container">
-      <!-- Questions will be dynamically added here -->
+    
     </div>
 
     <button id="form-buttons" type="button" class="add-question-button">Soru Ekle</button>
     <button id="form-buttons" type="button" class="display-button">Göster</button>
   </div>
+      
+</section>
 
-  <div id="get-product">
+  
+
+  <!-- <div id="get-product">
     <h2>Products</h2>
     <form id="getProductForm">
       <label for="productNameToGet">Product Name:</label>
@@ -34,20 +104,18 @@
       <br>
       <button type="button" id="getProductButton">Get Product</button>
     </form>
-  </div>
+  </div> -->
 
-  <div id="reset-database">
+  <!-- <div id="reset-database">
     <h2>Reset Database</h2>
     <button type="button" id="resetDatabaseButton">Reset Database</button>
   </div>
 
   <div>
     <button id="add-1000-products">Add 1000 Products</button>
-  </div>
+  </div> -->
 
-  <a href="test.html"><button>Go to Test Html</button></a>
-  <a href="firma.html"><button>Go to Firma html</button></a>
-  <a href="edit.html"><button>Go to edit Html</button></a>
+  
 
   <script type="module" src="../scripts/script.js"></script>
   <script type="module" src="../productJS/p_form.js"></script>

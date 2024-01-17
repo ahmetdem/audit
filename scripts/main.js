@@ -19,7 +19,7 @@ function createWindow() {
   // open dev tools
   mainWindow.webContents.openDevTools();
 
-  mainWindow.loadFile('../html/index.html');
+  mainWindow.loadFile('../html/mainpage.html');
 
   mainWindow.on('closed', function () {
     mainWindow = null;

@@ -1,15 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 body {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f2f2f2;
+    height: 100vh;
+    background: var(--body-color);
+    transition: var(--tran-05);
+    margin: 0;  /* Add margin reset for body */
 }
 
-h1,
-h2 {
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --body-color: #E4E9F7;
+    --sidebar-color: #FFF;
+    --primary-color: #695CFE;
+    --primar-color-light: #F6F5FF;
+    --text-color: #707070;
+
+    --tran-02: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    --tran-05: all 0.5s ease;
+}
+
+.sidebar .text {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-color);
+    transition: var(--tran-04);
+    white-space: nowrap;
+    opacity: 1;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    padding: 10px 14px;
+    background: var(--sidebar-color);
+    transition: var(--tran-05);
+    z-index: 100;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar li {
+    height: 50px;
+    margin-top: 10px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar li .icon {
+    display: flex;
+    align-items: center;
+    min-width: 60px;
+    font-size: 20px;
+    justify-content: center;
+}
+
+.sidebar li .icon,
+.sidebar li .text {
+    color: var(--text-color);
+    transition: var(--tran-02)
+}
+
+.sidebar header {
+    position: relative;
+}
+
+.sidebar li a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: var(--tran-04);
+}
+
+.sidebar li a:hover {
+    background: var(--primary-color);
+}
+
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text {
+    color: var(--sidebar-color);
+}
+
+.sidebar .menu-bar {
+    height: calc(100% - 50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.home {
+    position: relative;
+    left: 250px;
+    height: 100vh;
+    width: calc(100% - 250px);
+    background: var(--body-color);
+    transition: var(--tran-05);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.home .text {
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--text-color);
+    padding: 8px 40px;
+}
+.text.header-text {
     text-align: center;
 }
 
+.name {
+    font-size: 260%;
+    font-weight: bold;
+    color: #4a4b4c;
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
 #add-company {
     width: 500px;
     margin: 0 auto;
@@ -53,42 +170,71 @@ h2 {
     background-color: #286090;
 }
 
+/* New styles to move the form to the right side */
+@media (min-width: 768px) {
+    #add-company {
+        width: 500px; /* Adjust the width as needed */
+        margin: 0; /* Remove auto margin */
+        position: absolute;
+        top: 30px;
+        right: 60px;
+    }
+}
+
 /* style for search-container and product info */
 #search-container {
-	width: 500px;
-	margin: 0 auto;
-	padding: 20px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	background-color: #fff;
+    position: absolute;
+    top: 30px;
+    left: 60px;
+    height: 39px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-#search-container:hover {
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+#search-container input {
+    height: 100%;
+    width: 100%;  /* Set width to 100% */
+    border: none;
+    outline: none;
+    box-shadow: 5px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    background: var(--primar-color-light);
+    color: var(--text-color);
+    font-size: 16px;
+    font-weight: 500;
 }
 
-#search-input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-    user-select: text;
-}
 
 #search-results {
     list-style-type: none;
     padding: 0;
     margin-top: 10px;
+    border-radius: 6px;
 }
 
 #search-results li {
     border-bottom: 1px solid #ccc;
-    padding: 8px 0;
+    background: var(--primar-color-light);
     transition: background-color 0.3s ease;
 }
 
 #search-results li:hover {
-    background-color: #f0f0f0;
+    background: var(--primar-color-light);
+}
+
+#search-results a {
+    text-decoration: none;
+    color: var(--text-color);
+    display: block;
+    padding: 8px 0;
+    transition: var(--tran-04);
+}
+
+#search-results a:hover {
+    background-color: var(--primary-color);
+    color: var(--sidebar-color);
+    border-radius: 6px;
 }
 
 #company-info-container {
@@ -140,13 +286,7 @@ h2 {
 }
 
 
-
-
-
-
-
-
-
+ 
 
 
 

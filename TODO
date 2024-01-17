@@ -1,5 +1,3 @@
 - Make use of delete product and Update product. 
 
 - Organize the code better and do not fucking create million search files.
-
-- FIXME: Changing values does not work.

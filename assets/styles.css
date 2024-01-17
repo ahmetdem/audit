@@ -1,14 +1,132 @@
 /* CSS for Product Manager app */
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 body {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f2f2f2;
+    height: 100vh;
+    background: var(--body-color);
+    transition: var(--tran-05);
+    margin: 0;  /* Add margin reset for body */
 }
 
-h1,
-h2 {
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --body-color: #E4E9F7;
+    --sidebar-color: #FFF;
+    --primary-color: #695CFE;
+    --primar-color-light: #F6F5FF;
+    --text-color: #707070;
+
+    --tran-02: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    --tran-05: all 0.5s ease;
+}
+.sidebar .text {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-color);
+    transition: var(--tran-04);
+    white-space: nowrap;
+    opacity: 1;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    padding: 10px 14px;
+    background: var(--sidebar-color);
+    transition: var(--tran-05);
+    z-index: 100;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar li {
+    height: 50px;
+    margin-top: 10px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar li .icon {
+    display: flex;
+    align-items: center;
+    min-width: 60px;
+    font-size: 20px;
+    justify-content: center;
+}
+
+.sidebar li .icon,
+.sidebar li .text {
+    color: var(--text-color);
+    transition: var(--tran-02)
+}
+
+.sidebar header {
+    position: relative;
+}
+
+.sidebar li a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: var(--tran-04);
+}
+
+.sidebar li a:hover {
+    background: var(--primary-color);
+}
+
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text {
+    color: var(--sidebar-color);
+}
+
+.sidebar .menu-bar {
+    height: calc(100% - 50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.home {
+    position: relative;
+    left: 250px;
+    height: 100vh;
+    width: calc(100% - 250px);
+    background: var(--body-color);
+    transition: var(--tran-05);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.home .text {
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--text-color);
+    padding: 8px 40px;
+}
+.name {
+    font-size: 260%;
+    font-weight: bold;
+    color: #4a4b4c;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+
+}
+.text.header-text {
     text-align: center;
 }
 
@@ -98,7 +216,7 @@ h2 {
     color: #337ab7;
 }
 
-#get-product {
+/* #get-product {
     width: 500px;
     margin: 0 auto;
     padding: 20px;
@@ -177,7 +295,7 @@ h2 {
 #reset-database #message {
     margin-top: 15px;
     color: #337ab7;
-}
+} */
 
 #form-container {
     width: 500px;
@@ -290,7 +408,7 @@ input {
     background-color: #ff0000;
 }
 
-#search-container {
+/* #search-container {
     width: 500px;
     margin: 0 auto;
     padding: 20px;
@@ -306,7 +424,7 @@ input {
     color: #fff;
     border-radius: 3px;
     cursor: pointer;
-}
+} */
 
 /* Style for the product information container */
 #product-info {
@@ -322,19 +440,6 @@ input {
     font-size: 16px;
 }
 
-/* Style for the search results list */
-#search-results {
-    list-style-type: none;
-    padding: 0;
-}
-
-#search-results li {
-    margin: 5px 0;
-    padding: 8px;
-    background-color: #f8f8f8;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-}
 
 #message-container {
     width: 500px;

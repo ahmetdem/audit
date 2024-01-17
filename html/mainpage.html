@@ -4,25 +4,18 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Product Manager</title>
-	<link rel="stylesheet" href="../assets/firma.css">
+	<title>Product Classes Questions</title>
+	<link rel="stylesheet" href="../assets/styles-test.css">
 	<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-	
 </head>
 
 <body>
 	<nav class="sidebar close">
         <header>
-            <div class="image-text">
-                
-
-                <div class="text header-text">
+            <div class="text header-text">
                     <span class="name">Audit</span>
                  
                 </div>
-            </div>
-
-         
         </header>
 
         <div class="menu-bar">
@@ -56,6 +49,9 @@
                             <span class="text nav-text">Editle</span>
                         </a>
                     </li>
+
+
+                    
                 </ul>
             </div>
 
@@ -79,57 +75,31 @@
 
         </div>
     </nav>
+	
+
+
 	<section class="home">
 		<div id="search-container">
 		
 			<input type="text" id="search-input" placeholder=" Type your search...">
 			<ul id="search-results"></ul>
-
+		
 		</div>
+	
+    
+	<div id="questions-container">
 		
-		<!-- <div id="company-info-container">
-		
-	</div> -->
 
-	<div id="add-company" class="company-form-container">
-		<h2>Add Company</h2>
-
-		<form id="add-company-form">
-			<label for="company-Nname">Name:</label>
-			<input type="text" id="company-name" name="company-name" required>
-			<br>
-			<label for="company-adress">Address:</label>
-			<input type="text" id="company-adress" name="company-adress" required>
-			<br>
-			<label for="company-mail-adress">Mail Address:</label>
-			<input type="email" id="company-mail-adress" name="company-mail-adress" required>
-			<br>
-			<label for="company-fax-number">Fax Number:</label>
-			<input type="text" id="company-fax-number" name="company-fax-number" required>
-			<br>
-			<label for="company-tax-number">Tax Number:</label>
-			<input type="text" id="company-tax-number" name="company-tax-number" required>
-			<br>
-
-			<div id="products-search-container">
-				<label for="company-products">Search Products</label>
-				<input type="text" id="search-for-company-products-input" name="company-products">
-				<ul id="product-search-results"></ul>
-			</div>
-
-			<button id="company-form-button" type="button" class="add-company-button">Firma Ekle</button>
-		</form>
 	</div>
 
-
+    <div class="submit-button">
+		<button id="submit-button">Onayla</button>
+	</div>
 </section>
 	
 
-	
-	
-	<script type="module" src="../companyJS/c_search.js"></script>
-	<script type="module" src="../companyJS/c_p_search.js"></script>
-	<script type="module" src="../companyJS/c_form.js"></script>
+	<script type="module" src="../productJS/p_display.js"></script>
+	<script type="module" src="../productJS/p_search.js"></script>
 </body>
 
 </html>

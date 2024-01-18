@@ -1,8 +1,10 @@
 import { c_db } from './c_database.js';
-import { displayCompanyInfo } from './c_display.js';
 
 let allCompanies = [];
 let companiesLoaded = false;
+
+const container = document.getElementById('company-info-container');
+container.style.display = 'none';
 
 function fetchCompany(searchInput) {
 	// Simulating server-side logic with client-side filtering
@@ -43,21 +45,7 @@ searchInput.addEventListener('input', function () {
 	showResults(); // You can add debounce or delay here for better performance
 });
 
-searchInput.addEventListener('focus', function () {
-	showResults();
-});
-
-// Event listener to close results when clicking outside the search container
-document.addEventListener('click', function (event) {
-	var searchContainer = document.getElementById('search-container-company');
-	var searchResults = document.getElementById('search-results');
-
-	// Check if the click target is outside the search container
-	if (!searchContainer.contains(event.target) && !searchResults.contains(event.target)) {
-		// Hide the results
-		searchResults.style.display = 'none';
-	}
-});
+showResults();
 
 function handleResultClick(event) {
 	var selectedCompany = event.target.textContent;
@@ -96,12 +84,45 @@ document.getElementById('search-input').addEventListener('input', function () {
 
 document.getElementById('search-results').addEventListener('click', handleResultClick);
 
-// Event listener to close results when clicking outside the search container
-document.addEventListener('click', function (event) {
-	var searchContainer = document.getElementById('search-container-company');
-	var searchResults = document.getElementById('search-results');
 
-	if (!searchContainer.contains(event.target) && !searchResults.contains(event.target)) {
-		searchResults.style.display = 'none';
-	}
-});
+function displayCompanyInfo(company) {
+    const container = document.getElementById('company-info-container');
+	container.style.display = 'block';
+    container.innerHTML = ''; // Clear the container
+
+    const companyContainer = document.createElement('div');
+    companyContainer.classList.add('company-info-container');
+    companyContainer.id = company.id; // Set the id of the companyContainer
+
+    const companyNameElement = document.createElement('p');
+    companyNameElement.textContent = `Company Name: ${company.name}`;
+    companyContainer.appendChild(companyNameElement);
+
+    const companyAddressElement = document.createElement('p');
+    companyAddressElement.textContent = `Company Address: ${company.adress}`;
+    companyContainer.appendChild(companyAddressElement);
+
+    const companyMailElement = document.createElement('p');
+    companyMailElement.textContent = `Company Mail Address: ${company.mailAdress}`;
+    companyContainer.appendChild(companyMailElement);
+
+    const companyFaxElement = document.createElement('p');
+    companyFaxElement.textContent = `Company Fax Number: ${company.faxNum}`;
+    companyContainer.appendChild(companyFaxElement);
+
+    const companyTaxElement = document.createElement('p');
+    companyTaxElement.textContent = `Company Tax Number: ${company.taxNum}`;
+    companyContainer.appendChild(companyTaxElement);
+
+    // Display the products
+    const productsContainer = document.createElement('div');
+    productsContainer.classList.add('products-container');
+    company.products.forEach(product => {
+        const productElement = document.createElement('p');
+        productElement.textContent = `Product: ${product}`;
+        productsContainer.appendChild(productElement);
+    });
+
+    companyContainer.appendChild(productsContainer);
+    container.appendChild(companyContainer);
+}

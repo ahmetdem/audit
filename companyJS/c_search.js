@@ -14,8 +14,8 @@ async function showResults() {
 	var searchResults = document.getElementById('search-results');
 
 	if (!companiesLoaded) {
-        await setAllCompanies();
-    }
+		await setAllCompanies();
+	}
 
 	// Fetch Company from the client-side based on the search input
 	var filteredOptions = fetchCompany(searchInput);
@@ -72,14 +72,14 @@ function displayCompanyDetails(companyName) {
 }
 
 function setAllCompanies() {
-    return new Promise((resolve) => {
-        c_db.findAllCompanies((companies) => {
-            allCompanies = companies;
-            companiesLoaded = true;
-            console.log(allCompanies);
-            resolve();  // Resolve the promise once Company are loaded
-        });
-    });
+	return new Promise((resolve) => {
+		c_db.findAllCompanies((companies) => {
+			allCompanies = companies;
+			companiesLoaded = true;
+			console.log(allCompanies);
+			resolve();  // Resolve the promise once Company are loaded
+		});
+	});
 }
 
 // Event listener for real-time updates

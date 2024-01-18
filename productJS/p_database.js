@@ -156,3 +156,23 @@ export class DatabaseManager {
 }
 
 export const p_db = new DatabaseManager();
+
+// add 10 products with 5 questions and 3 options each to the database
+
+// p_db.getNumberOfElements().then((count) => {
+//   if (count === 0) {
+//     const products = [];
+//     for (let i = 0; i < 10; i++) {
+//       const questions = [];
+//       for (let j = 0; j < 5; j++) {
+//         const options = [];
+//         for (let k = 0; k < 3; k++) {
+//           options.push({ id: k, text: `Option ${k}` });
+//         }
+//         questions.push({ id: j, text: `Question ${j}`, options: options });
+//       }
+//       products.push({ name: `Product ${i}`, questions: questions });
+//     }
+//     p_db.insertProduct(products);
+//   }
+// });

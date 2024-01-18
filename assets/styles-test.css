@@ -4,7 +4,11 @@ body {
     height: 100vh;
     background: var(--body-color);
     transition: var(--tran-05);
+
+    user-select: none;
+
     margin: 0;  /* Add margin reset for body */
+    padding: 0; /* Add padding reset for body */
 }
 
 * {
@@ -196,7 +200,27 @@ body {
     border-radius: 6px;
     background-color: var(--primar-color-light);
     box-shadow: 5px 4px 8px rgba(0, 0, 0, 0.2);
+
+    max-height: 650px;
+    overflow-y: auto; 
+
+    scrollbar-width: thin;
+    scrollbar-color: #eee #888;
 }
+
+#questions-container::-webkit-scrollbar {
+    width: 12px;
+    display: none;
+}
+
+#questions-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+}
+
+#questions-container::-webkit-scrollbar-track {
+    background-color: #eee;
+}
+
 
 .question-container p {
     font-weight: 600;
@@ -219,6 +243,12 @@ body {
 
 .options-container p:hover {
     background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.options-container .selected {
+    background-color: #f0f0f0; /* Change the background color to your desired highlight color */
+    font-weight: bold; /* Change the font weight or any other styles as desired */
 }
 
 #submit-button {
@@ -235,6 +265,58 @@ body {
     font-size: 14px;
     font-weight: 600;
     padding: 10px;
+    cursor: pointer;
 }
 
+#search-results .result-item:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
 
+#search-results .result-item {
+    padding: 12px; /* Increase padding for a more spacious feel */
+    border-bottom: 1px solid #ccc;
+    transition: background-color 0.3s ease;
+    border-radius: 8px; /* Add rounded corners */
+}
+
+#search-results .result-item:last-child {
+    border-bottom: none;
+}
+
+#search-results .result-item .result-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+#search-results .result-item.selected {
+    background-color: #3498db; /* Change the background color to your desired selected color */
+    color: #fff; /* Change the text color to ensure readability */
+}
+
+#context-menu {
+    position: fixed;
+    background-color: var(--body-color);
+    border: 1px solid var(--text-color);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    list-style: none;
+    padding: 0;
+    display: none;
+}
+
+#context-menu ul {
+    margin: 0;
+    padding: 0;
+}
+
+#context-menu li {
+    padding: 8px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+#context-menu li:hover {
+    background-color: var(--primar-color-light);
+}

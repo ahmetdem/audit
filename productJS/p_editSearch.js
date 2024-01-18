@@ -27,7 +27,7 @@ async function showResults() {
 	searchResults.innerHTML = '';
 
 	// Display up to 5 filtered results as clickable buttons and sort them alphabetically
-	for (var i = 0; i < Math.min(filteredOptions.length, 5); i++) {
+	for (var i = 0; i < Math.min(filteredOptions.length, 10); i++) {
 		var listItem = document.createElement('li');
 		listItem.className = 'result-item';
 		listItem.textContent = filteredOptions[i].name;
@@ -46,25 +46,19 @@ searchInput.addEventListener('input', function () {
 	showResults(); // You can add debounce or delay here for better performance
 });
 
-searchInput.addEventListener('focus', function () {
-	showResults();
-});
-
-// Event listener to close results when clicking outside the search container
-document.addEventListener('click', function (event) {
-	var searchContainer = document.getElementById('search-container');
-	var searchResults = document.getElementById('search-results');
-
-	// Check if the click target is outside the search container
-	if (!searchContainer.contains(event.target) && !searchResults.contains(event.target)) {
-		// Hide the results
-		searchResults.style.display = 'none';
-	}
-});
+showResults();
 
 function handleResultClick(event) {
-	var selectedProduct = event.target.textContent;
-	displayProductDetails(selectedProduct);
+    // Remove the 'selected' class from all result items
+    document.querySelectorAll('#search-results .result-item').forEach(item => {
+        item.classList.remove('selected');
+    });
+
+    // Add the 'selected' class to the clicked item
+    event.target.classList.add('selected');
+
+    var selectedProduct = event.target.textContent;
+    displayProductDetails(selectedProduct);
 }
 
 // Function to display details of the selected product
@@ -92,13 +86,3 @@ document.getElementById('search-input').addEventListener('input', function () {
 
 // Event listener for handling result clicks
 document.getElementById('search-results').addEventListener('click', handleResultClick);
-
-// Event listener to close results when clicking outside the search container
-document.addEventListener('click', function (event) {
-	var searchContainer = document.getElementById('search-container');
-	var searchResults = document.getElementById('search-results');
-
-	if (!searchContainer.contains(event.target) && !searchResults.contains(event.target)) {
-		searchResults.style.display = 'none';
-	}
-});

@@ -27,14 +27,17 @@ export function displayQuestionsAndOptions(product) {
         question.options.forEach(option => {
             const optionElement = document.createElement('p');
             optionElement.textContent = option.text;
-
+        
+            // Set a unique ID for each option based on question and option IDs
+            optionElement.id = `option-${question.id}-${option.id}`;
+        
             // Add click event listener to each option
             optionElement.addEventListener('click', () => {
                 handleOptionClick(question.id, option.id);
             });
-
+        
             optionsContainer.appendChild(optionElement);
-        });
+        });        
 
         questionContainer.appendChild(optionsContainer);
         container.appendChild(questionContainer);
@@ -43,24 +46,30 @@ export function displayQuestionsAndOptions(product) {
 
 // Function to handle the click on an option
 function handleOptionClick(questionId, optionId) {
-    // Check if an option for this question is already selected
-    if (selectedOptions[questionId]) {
-        // Deselect the previously selected option
-        const previousOption = document.getElementById(selectedOptions[questionId]);
-        if (previousOption) {
-            previousOption.classList.remove('selected');
-        }
-    }
+    // Get the clicked option
+    const clickedOption = document.getElementById(`option-${questionId}-${optionId}`);
 
-    // Select the clicked option
-    const clickedOption = document.getElementById(optionId);
-    if (clickedOption) {
+    // Check if the clicked option is already selected
+    const isAlreadySelected = clickedOption.classList.contains('selected');
+
+    // Deselect all options for the current question
+    const questionOptions = document.querySelectorAll(`[id^=option-${questionId}]`);
+    questionOptions.forEach(optionElement => {
+        optionElement.classList.remove('selected');
+    });
+
+    // Toggle the selection for the clicked option
+    if (!isAlreadySelected) {
         clickedOption.classList.add('selected');
+        // Update the selectedOptions object
+        selectedOptions[questionId] = optionId;
+    } else {
+        // If already selected, deselect
+        // Update the selectedOptions object to indicate no selection for this question
+        selectedOptions[questionId] = null;
     }
-
-    // Update the selectedOptions object
-    selectedOptions[questionId] = optionId;
 }
+
 
 document.addEventListener('DOMContentLoaded', function () {
     const submitButton = document.getElementById('submit-button');

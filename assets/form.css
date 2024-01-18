@@ -129,61 +129,34 @@ body {
     text-align: center;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
-#add-company {
-    width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-}
+/* STYLES FOR SEARCH CONTAINER AND THE RESULT LIST */
 
-#add-company form {
-    display: flex;
-    flex-direction: column;
-}
-
-#add-company form .form-group {
-    margin-bottom: 15px;
-}
-
-#add-company form label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-#add-company form input[type="text"] {
-    width: 100%;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-}
-
-#add-company form button {
+#search-results .result-item-company:hover {
+    background-color: #f0f0f0;
     cursor: pointer;
-    background-color: #337ab7;
+}
+
+#search-results .result-item-company {
+    padding: 12px;
+    border-bottom: 1px solid #ccc;
+    transition: background-color 0.3s ease;
+    border-radius: 8px;
+}
+
+#search-results .result-item-company:last-child {
+    border-bottom: none;
+}
+
+#search-results .result-item-company .result-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+#search-results .result-item-company.selected {
+    background-color: #3498db;
     color: #fff;
-    padding: 5px 10px;
-    border: 1px solid #337ab7;
-    border-radius: 3px;
 }
 
-#add-company form button:hover {
-    background-color: #286090;
-}
-
-/* New styles to move the form to the right side */
-@media (min-width: 768px) {
-    #add-company {
-        width: 500px; /* Adjust the width as needed */
-        margin: 0; /* Remove auto margin */
-        position: absolute;
-        top: 30px;
-        right: 60px;
-    }
-}
-
-/* style for search-container and product info */
 #search-container-company {
     position: absolute;
     top: 30px;
@@ -196,7 +169,7 @@ body {
 
 #search-container-company input {
     height: 100%;
-    width: 100%;  /* Set width to 100% */
+    width: 100%;
     border: none;
     outline: none;
     box-shadow: 5px 4px 8px rgba(0, 0, 0, 0.2);
@@ -238,74 +211,120 @@ body {
     border-radius: 6px;
 }
 
-#company-info-container {
-    width: 500px;
+/* New styles for the dropdown menu */
+#product-dropdown {
+    position: absolute;
+    top: 30%;
+    left: 60px;
+    width: 200px; /* Set the width according to your preference */
+    padding: 8px;
+    background: var(--primar-color-light);
+    border-radius: 6px;
+    box-shadow: 5px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 2; /* Ensure the dropdown is above other elements */
+}
+
+#product-dropdown option {
+    background: var(--primar-color-light);
+    color: var(--text-color);
+    border-radius: 6px;
+    padding: 8px;
+}
+
+#product-dropdown option:hover {
+    background-color: var(--primary-color);
+    color: var(--sidebar-color);
+}
+
+#questions-container {
+    position: relative;
+    width: 50%;
+    top: 11px;
+    left: 22%;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
+    border-radius: 6px;
+    background-color: var(--primar-color-light);
+    box-shadow: 5px 4px 8px rgba(0, 0, 0, 0.2);
+
+    max-height: 650px;
+    overflow-y: auto; 
+
+    scrollbar-width: thin;
+    scrollbar-color: #eee #888;
 }
 
-
-#products-search-container {
-    width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
+#questions-container::-webkit-scrollbar {
+    width: 12px;
+    display: none;
 }
 
-#product-search-results {
-    list-style-type: none;
-    padding: 0;
-    margin-top: 10px;
+#questions-container::-webkit-scrollbar-thumb {
+    background-color: #888;
 }
 
-#product-search-results li {
+#questions-container::-webkit-scrollbar-track {
+    background-color: #eee;
+}
+
+.question-container p {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.options-container {
+    margin-left: 20px;
+}
+
+.options-container p {
     border-bottom: 1px solid #ccc;
     padding: 8px 0;
     transition: background-color 0.3s ease;
 }
 
-#product-search-results li:hover {
-    background-color: #f0f0f0;
+.options-container p:last-child {
+    border-bottom: none;
 }
 
-#search-results .result-item-company:hover {
+.options-container p:hover {
     background-color: #f0f0f0;
     cursor: pointer;
 }
 
-#search-results .result-item-company {
-    padding: 12px; /* Increase padding for a more spacious feel */
-    border-bottom: 1px solid #ccc;
-    transition: background-color 0.3s ease;
-    border-radius: 8px; /* Add rounded corners */
+.options-container .selected {
+    background-color: #f0f0f0; /* Change the background color to your desired highlight color */
+    font-weight: bold; /* Change the font weight or any other styles as desired */
 }
 
-#search-results .result-item-company:last-child {
-    border-bottom: none;
-}
-
-#search-results .result-item-company .result-title {
+#submit-button {
+    position: relative;
+    width: 25%;
+    left: 60%;
+    top: 20px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: var(--primary-color);
+    box-shadow: 5px 4px 8px rgba(0, 0, 0, 0.2);
+    color: var(--sidebar-color);
+    font-size: 14px;
     font-weight: 600;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.option-input {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: var(--primar-color-light);
+    padding: 8px;
     margin-bottom: 10px;
+    width: 50%; /* Adjust the width as needed */
+    transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
-#search-results .result-item-company.selected {
-    background-color: #3498db; /* Change the background color to your desired selected color */
-    color: #fff; /* Change the text color to ensure readability */
+.option-input:focus {
+    border-color: #3498db; /* Change the border color on focus */
+    background-color: #fff; /* Change the background color on focus */
 }
-
- 
-
-
-
-
-
-
-
-
-

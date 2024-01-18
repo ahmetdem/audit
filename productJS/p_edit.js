@@ -38,6 +38,8 @@ export function displayQuestionsAndOptions(product) {
             optionElement.style.display = 'block'; // Initially show text element
 
             const optionInput = document.createElement('input');
+            optionInput.className = 'option-input';
+
             optionInput.style.display = 'none'; // Initially hide input element
 
             // Add click event listener to each option

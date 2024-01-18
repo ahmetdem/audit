@@ -86,3 +86,5 @@ document.getElementById('search-input').addEventListener('input', function () {
 
 // Event listener for handling result clicks
 document.getElementById('search-results').addEventListener('click', handleResultClick);
+
+

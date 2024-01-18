@@ -60,6 +60,16 @@ export class compDatabaseManager {
 			}
 		});
 	}
+
+	getAllProductsFromCompany(company, callback = () => { }) {
+		this.db.findOne({ name: company.name }, (findErr, document) => {
+			if (findErr) {
+				console.error(findErr);
+			} else {
+				callback(document.products);
+			}
+		});
+	}
 }
 
 export const c_db = new compDatabaseManager();

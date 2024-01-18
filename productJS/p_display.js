@@ -83,27 +83,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (!selectedOptions.hasOwnProperty(question.id)) {
                 allQuestionsAnswered = false;
-
-                // Highlight the unanswered question by accessing the question container element
-                const questionElement = document.getElementById(question.id);
-                if (questionElement) {
-                    questionElement.style.backgroundColor = 'red';
-                }
             }
         });
 
         if (!allQuestionsAnswered) {
-            alert('Lütfen tüm soruları cevaplayın.\nCevaplanmayan sorular kırmızı renkte gösterilecektir.');
+            alert('Lütfen tüm soruları cevaplayın.');
             return;
         }  
-
-        // reset the color of the questions
-        g_Product.questions.forEach(question => {
-            const questionElement = document.getElementById(question.id);
-            if (questionElement) {
-                questionElement.style.backgroundColor = '';
-            }
-        });
 
         console.log(selectedOptions);
 
@@ -119,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         if (!allAnswersCorrect) {
-            alert('Cevaplarınız doğru değil.\nYanlış cevaplar kırmızı renkte gösterilecektir.');
+            alert('Cevaplarınız doğru değil.');
             // log the wrong answers
             g_Product.questions.forEach(question => {
                 const selectedOptionId = selectedOptions[question.id];

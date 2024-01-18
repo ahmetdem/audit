@@ -85,13 +85,3 @@ document.getElementById('search-input').addEventListener('input', function () {
 
 // Event listener for handling result clicks
 document.getElementById('search-results').addEventListener('click', handleResultClick);
-
-// // Event listener to close results when clicking outside the search container
-// document.addEventListener('click', function (event) {
-// 	var searchContainer = document.getElementById('search-container');
-// 	var searchResults = document.getElementById('search-results');
-
-// 	if (!searchContainer.contains(event.target) && !searchResults.contains(event.target)) {
-// 		searchResults.style.display = 'none';
-// 	}
-// });

@@ -221,7 +221,6 @@ body {
     background-color: #eee;
 }
 
-
 .question-container p {
     font-weight: 600;
     margin-bottom: 10px;
@@ -319,4 +318,19 @@ body {
 
 #context-menu li:hover {
     background-color: var(--primar-color-light);
+}
+
+.option-input {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: var(--primar-color-light);
+    padding: 8px;
+    margin-bottom: 10px;
+    width: 50%; /* Adjust the width as needed */
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.option-input:focus {
+    border-color: #3498db; /* Change the border color on focus */
+    background-color: #fff; /* Change the background color on focus */
 }

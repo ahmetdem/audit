@@ -1,5 +1,6 @@
 import { c_db } from './c_database.js';
-import { displayCompanyInfo } from './c_display.js';
+import { p_db } from '../productJS/p_database.js';
+import { displayQuestionsAndOptions } from '../productJS/p_display.js';
 
 let allCompanies = [];
 let companiesLoaded = false;
@@ -24,7 +25,7 @@ async function showResults() {
 	searchResults.innerHTML = '';
 
 	// Display up to 5 filtered results as clickable buttons and sort them alphabetically
-	for (var i = 0; i < Math.min(filteredOptions.length, 20); i++) {
+	for (var i = 0; i < Math.min(filteredOptions.length, 5); i++) {
 		var listItem = document.createElement('li');
 		listItem.className = 'result-item-company';
 		listItem.textContent = filteredOptions[i].name;
@@ -43,21 +44,7 @@ searchInput.addEventListener('input', function () {
 	showResults(); // You can add debounce or delay here for better performance
 });
 
-searchInput.addEventListener('focus', function () {
-	showResults();
-});
-
-// Event listener to close results when clicking outside the search container
-document.addEventListener('click', function (event) {
-	var searchContainer = document.getElementById('search-container-company');
-	var searchResults = document.getElementById('search-results');
-
-	// Check if the click target is outside the search container
-	if (!searchContainer.contains(event.target) && !searchResults.contains(event.target)) {
-		// Hide the results
-		searchResults.style.display = 'none';
-	}
-});
+showResults();
 
 function handleResultClick(event) {
 	var selectedCompany = event.target.textContent;
@@ -68,14 +55,38 @@ function handleResultClick(event) {
 	});
 
 	event.target.classList.add('selected');
-	displayCompanyDetails(selectedCompany);
+
+	// choose the selected company
+	getProductsFromChoosenCompany(selectedCompany);
 }
 
-// Function to display details of the selected Company
-function displayCompanyDetails(companyName) {
-	// display the product questions and options using the function
-	var selectedCompany = allCompanies.find(company => company.name === companyName);
-	displayCompanyInfo(selectedCompany);
+function getProductsFromChoosenCompany(selectedCompany) {
+    c_db.findCompanyByName(selectedCompany, (company) => {
+        const companyProducts = company.products;
+        const dropdown = document.getElementById('product-dropdown');
+
+        // Clear existing options
+        dropdown.innerHTML = '';
+
+        // Add products to the dropdown
+        companyProducts.forEach(product => {
+            const option = document.createElement('option');
+            option.value = product;
+            option.text = product;
+            dropdown.appendChild(option);
+        });
+    });
+}
+
+document.getElementById('product-dropdown').addEventListener('change', handleProductSelection);
+
+function handleProductSelection(event) {
+    const selectedProduct = event.target.value;
+    
+	p_db.findProductByName(selectedProduct, (product) => {
+		console.log(product);
+		displayQuestionsAndOptions(product);
+	});
 }
 
 function setAllCompanies() {
@@ -89,19 +100,4 @@ function setAllCompanies() {
 	});
 }
 
-// Event listener for real-time updates
-document.getElementById('search-input').addEventListener('input', function () {
-	showResults();
-});
-
 document.getElementById('search-results').addEventListener('click', handleResultClick);
-
-// Event listener to close results when clicking outside the search container
-document.addEventListener('click', function (event) {
-	var searchContainer = document.getElementById('search-container-company');
-	var searchResults = document.getElementById('search-results');
-
-	if (!searchContainer.contains(event.target) && !searchResults.contains(event.target)) {
-		searchResults.style.display = 'none';
-	}
-});

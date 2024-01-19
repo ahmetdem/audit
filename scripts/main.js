@@ -1,5 +1,4 @@
-// main.js
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 
 let mainWindow;
 
@@ -39,3 +38,14 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
+// Listen for the 'quit-app' message from the renderer process
+ipcMain.on('quit-app', () => {
+  console.log("Received quit-app message");
+  quitApp();
+});
+
+// Add this function to quit the app
+function quitApp() {
+  app.quit();
+}

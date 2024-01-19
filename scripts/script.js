@@ -1,3 +1,5 @@
+const { ipcRenderer } = require('electron');
+
 document.addEventListener('DOMContentLoaded', function () {
 
   var navLinks = document.querySelectorAll('.nav-link');
@@ -11,10 +13,16 @@ document.addEventListener('DOMContentLoaded', function () {
       if (!link.classList.contains('active')) {
         link.classList.add('active'); // Apply the 'active' class to highlight
       }
-      
+
       link.addEventListener('click', function (event) {
         event.preventDefault(); // Prevent the default link behavior (e.g., page reload)
       });
     }
   });
+
+  // Add click event listener to the Çıkış button
+  document.getElementById('exit-link').addEventListener('click', () => {
+    ipcRenderer.send('quit-app');
+  });
 });
+

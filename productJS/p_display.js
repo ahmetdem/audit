@@ -1,3 +1,6 @@
+const fs = require('fs');
+const path = require('path');
+
 // Initialize an object to store selected options
 const selectedOptions = {};
 let g_Product;
@@ -11,6 +14,17 @@ export function displayQuestionsAndOptions(product) {
     Object.keys(selectedOptions).forEach(key => {
         delete selectedOptions[key];
     });
+
+    // Create input fields for firm questions
+    const firmNameInput = document.createElement('input');
+    firmNameInput.type = 'text';
+    firmNameInput.placeholder = 'Enter firm name';
+    container.appendChild(firmNameInput);
+
+    const storeNameInput = document.createElement('input');
+    storeNameInput.type = 'text';
+    storeNameInput.placeholder = 'Enter store name';
+    container.appendChild(storeNameInput);
 
     product.questions.forEach(question => {
         const questionContainer = document.createElement('div');
@@ -100,23 +114,54 @@ document.addEventListener('DOMContentLoaded', function () {
             const selectedOptionId = selectedOptions[question.id];
             const selectedOption = question.options.find(option => option.id === selectedOptionId);
             if (!selectedOption.isTrue) {
-                allAnswersCorrect = false;
+                allAnswersCorrect = false; // Do not forget to use this somewhere
             }
         });
 
-        if (!allAnswersCorrect) {
-            alert('Cevaplarınız doğru değil.');
-            // log the wrong answers
-            g_Product.questions.forEach(question => {
-                const selectedOptionId = selectedOptions[question.id];
-                const selectedOption = question.options.find(option => option.id === selectedOptionId);
-                if (!selectedOption.isTrue) {
-                    console.log(`Question: ${question.text}, Answer: ${selectedOption.text}`);
-                }
-            });
+        // If all answers are correct, log the firm and store names
+        const firmName = document.querySelector('#questions-container input:nth-child(1)').value;
+        const storeName = document.querySelector('#questions-container input:nth-child(2)').value;
 
-
+        if (firmName === '' || storeName === '') {
+            alert('Lütfen firm ve mağaza isimlerini girin.');
             return;
         }
+
+        console.log(`Firm Name: ${firmName}`);
+        console.log(`Store Name: ${storeName}`);
+
+        // Log the correct answers
+        g_Product.questions.forEach(question => {
+            const selectedOptionId = selectedOptions[question.id];
+            const selectedOption = question.options.find(option => option.id === selectedOptionId);
+            console.log(`Question: ${question.text}, Answer: ${selectedOption.text}`);
+        });
+
+        createFinalForm (firmName, storeName, selectedOptions);
     });
 });
+
+
+function createFinalForm(firmName, storeName, selectedOptions) {
+    const formContent = `Firm Name: ${firmName}\nStore Name: ${storeName}\nSelected Options: ${JSON.stringify(selectedOptions)}`;
+    
+    // Get the user's Documents folder path
+    const documentsFolderPath = path.join(process.env.HOME || process.env.USERPROFILE, 'Documents');
+
+    // Create the forms folder path
+    const formsFolderPath = path.join(documentsFolderPath, 'forms');
+
+    // Create the forms folder if it doesn't exist
+    if (!fs.existsSync(formsFolderPath)) {
+        fs.mkdirSync(formsFolderPath);
+    }
+
+    // Create the file name and path
+    const fileName = `${firmName}-${storeName}.txt`;
+    const filePath = path.join(formsFolderPath, fileName);
+
+    // Write the form content to the text file
+    fs.writeFileSync(filePath, formContent);
+
+    console.log('Final form created successfully!');
+}

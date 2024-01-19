@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Classes Questions</title>
-    <link rel="stylesheet" href="../assets/styles-test.css">
+    <link rel="stylesheet" href="../assets/form.css">
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
@@ -49,13 +49,6 @@
                             <span class="text nav-text">Editle</span>
                         </a>
                     </li>
-
-                    <li class="nav-link">
-                        <a href="form.html">
-                            <i class="bx bx-edit icon "></i>
-                            <span class="text nav-text">Form</span>
-                        </a>
-                    </li>
                 </ul>
             </div>
 
@@ -79,7 +72,7 @@
     </nav>
 
     <section class="home">
-        <div id="search-container">
+		<div id="search-container-company" class="search-container">
             <input type="text" id="search-input" placeholder=" Type your search...">
             <ul id="search-results"></ul>
         </div>
@@ -87,14 +80,17 @@
         <div id="questions-container">
         </div>
 
+        <select id="product-dropdown">
+            <!-- Products will be dynamically added here -->
+        </select>
+
         <div class="submit-button">
             <button id="submit-button">Onayla</button>
         </div>
     </section>
 
-
+	<script type="module" src="../companyJS/searchCForP.js"></script>
     <script type="module" src="../productJS/p_display.js"></script>
-    <script type="module" src="../productJS/p_search.js"></script>
-</body>
 
+</body>
 </html>

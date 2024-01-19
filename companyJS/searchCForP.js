@@ -1,9 +1,11 @@
 import { c_db } from './c_database.js';
 import { p_db } from '../productJS/p_database.js';
+
 import { displayQuestionsAndOptions } from '../productJS/p_display.js';
 
 let allCompanies = [];
 let companiesLoaded = false;
+export let g_Company;
 
 function fetchCompany(searchInput) {
 	// Simulating server-side logic with client-side filtering
@@ -62,6 +64,10 @@ function handleResultClick(event) {
 
 function getProductsFromChoosenCompany(selectedCompany) {
     c_db.findCompanyByName(selectedCompany, (company) => {
+
+		// Save the selected company
+		g_Company = company;
+
         const companyProducts = company.products;
         const dropdown = document.getElementById('product-dropdown');
 

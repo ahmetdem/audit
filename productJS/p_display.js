@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
+import { g_Company } from '../companyJS/searchCForP.js';
+
 // Initialize an object to store selected options
 const selectedOptions = {};
 let g_Product;
@@ -157,7 +159,7 @@ function createFinalForm(firmName, storeName, selectedOptions) {
     }
 
     // Create the file name and path
-    const fileName = `${firmName}-${storeName}.txt`;
+    const fileName = `form-for-${g_Product.name}-and-${g_Company.name}.txt`;
     const filePath = path.join(formsFolderPath, fileName);
 
     // Write the form content to the text file

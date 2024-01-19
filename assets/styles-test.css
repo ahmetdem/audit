@@ -201,7 +201,7 @@ body {
     background-color: var(--primar-color-light);
     box-shadow: 5px 4px 8px rgba(0, 0, 0, 0.2);
 
-    max-height: 650px;
+    max-height: 720px;
     overflow-y: auto; 
 
     scrollbar-width: thin;
@@ -248,6 +248,24 @@ body {
 .options-container .selected {
     background-color: #f0f0f0; /* Change the background color to your desired highlight color */
     font-weight: bold; /* Change the font weight or any other styles as desired */
+}
+
+.active {
+    background: var(--primary-color) !important;
+    color: var(--sidebar-color) !important;
+    transition: var(--tran-04) !important;
+    border-radius: 6px;
+}
+
+.sidebar li.active a,
+.sidebar li.active .icon,
+.sidebar li.active .text {
+    color: var(--sidebar-color) !important;
+    transition: var(--tran-02) !important;
+}
+
+.sidebar li.active a {
+    background: var(--primary-color) !important;
 }
 
 #submit-button {

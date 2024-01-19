@@ -7,6 +7,7 @@ body {
     background: var(--body-color);
     transition: var(--tran-05);
     margin: 0;  /* Add margin reset for body */
+    user-select: none;
 }
 
 * {
@@ -130,13 +131,51 @@ body {
     text-align: center;
 }
 
+.active {
+    background: var(--primary-color) !important;
+    color: var(--sidebar-color) !important;
+    transition: var(--tran-04) !important;
+    border-radius: 6px;
+}
+
+.sidebar li.active a,
+.sidebar li.active .icon,
+.sidebar li.active .text {
+    color: var(--sidebar-color) !important;
+    transition: var(--tran-02) !important;
+}
+
+.sidebar li.active a {
+    background: var(--primary-color) !important;
+}
+
 #add-product {
     width: 500px;
     margin: 0 auto;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 0px solid #ccc;
+    border-radius: 6px;
     background-color: #fff;
+    box-shadow: 5px 4px 8px rgba(0, 0, 0, 0.2);
+
+    max-height: 720px;
+    overflow-y: auto; 
+
+    scrollbar-width: thin;
+    scrollbar-color: #eee #888;
+}
+
+#add-product::-webkit-scrollbar {
+    width: 12px;
+    display: none;
+}
+
+#add-product::-webkit-scrollbar-thumb {
+    background-color: #888;
+}
+
+#add-product::-webkit-scrollbar-track {
+    background-color: #eee;
 }
 
 #add-product form {
@@ -166,7 +205,7 @@ body {
     color: #fff;
     padding: 5px 10px;
     border: 1px solid #337ab7;
-    border-radius: 3px;
+    border-radius: px;
 }
 
 #add-product form button:hover {
@@ -216,86 +255,6 @@ body {
     color: #337ab7;
 }
 
-/* #get-product {
-    width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-}
-
-#get-product form {
-    display: flex;
-    flex-direction: column;
-}
-
-#get-product form .form-group {
-    margin-bottom: 15px;
-}
-
-#get-product form label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-#get-product form input[type="text"] {
-    width: 100%;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-}
-
-#get-product form button {
-    cursor: pointer;
-    background-color: #337ab7;
-    color: #fff;
-    padding: 5px 10px;
-    border: 1px solid #337ab7;
-    border-radius: 3px;
-}
-
-#get-product form button:hover {
-    background-color: #286090;
-}
-
-#get-product form #message {
-    margin-top: 15px;
-    color: #337ab7;
-}
-
-#reset-database {
-    width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-}
-
-#reset-database button {
-    cursor: pointer;
-    background-color: #337ab7;
-    color: #fff;
-    padding: 5px 10px;
-    border: 1px solid #337ab7;
-    border-radius: 3px;
-    margin: 0 auto;
-    display: block;
-}
-
-#reset-database button:hover {
-    background-color: #286090;
-}
-
-#reset-database h2 {
-    text-align: center;
-}
-
-#reset-database #message {
-    margin-top: 15px;
-    color: #337ab7;
-} */
 
 #form-container {
     width: 500px;
@@ -310,6 +269,7 @@ body {
     font-size: 1.5em;
     font-weight: bold;
     margin-bottom: 10px;
+    
 }
 
 .form-control {
@@ -327,12 +287,13 @@ input {
     margin-bottom: 10px;
     box-sizing: border-box;
     user-select: text;
+    border: 1px solid #bfbdbd;
+    border-radius: 6px;
 }
 
 .options-container {
     width: 100%;
     max-width: 400px;
-    /* Adjust as needed */
     margin-top: 10px;
 }
 
@@ -359,14 +320,17 @@ input {
 
 .add-option-button,
 .remove-question-button {
-    background-color: #4CAF50;
+    background-color:var(--primary-color);
     color: white;
     border: none;
+    border-radius:6px;
 }
 
 .remove-option-button,
 .remove-question-button {
-    background-color: #f44336;
+    background-color: #ee4d41;
+    border-radius:6px;
+    width:5%;
 }
 
 .add-option-button:hover,
@@ -378,77 +342,44 @@ input {
 
 .add-question-button,
 .display-button {
-    width: calc(50% - 5px);
-    /* Adjust as needed */
+    width: calc(45% - 2px);  /* Adjust width */
     padding: 5px;
+    
     cursor: pointer;
     box-sizing: border-box;
     display: inline-block;
     /* Added to make elements appear side by side */
-    margin-bottom: 10px;
+    margin-right: 10px;  /* Increase this value for more space */
+    border-radius: 6px;
+    
+}
+.display-button {
+    margin-left: 25px;  /* Adjust this value to move the button more or less */
 }
 
 .add-question-button {
-    background-color: #4CAF50;
+    background-color:var(--primary-color);
     color: white;
     border: none;
 }
 
 .add-question-button:hover {
-    background-color: #ff0000;
+    background-color: #286090;
 }
 
 .display-button {
-    background-color: #4CAF50;
+    background-color: var(--primary-color);
     color: white;
     border: none;
 }
 
 .display-button:hover {
-    background-color: #ff0000;
+    background-color: #286090;
 }
 
-/* #search-container {
-    width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-}
-
-#search-button {
-    padding: 8px;
-    border: 1px solid #007BFF;
-    background-color: #007BFF;
-    color: #fff;
-    border-radius: 3px;
-    cursor: pointer;
-} */
 
 /* Style for the product information container */
-#product-info {
-    width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;     
-}
 
-#product-description {
-    font-size: 16px;
-}
-
-
-#message-container {
-    width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-}
 
 .options-container {
     width: 100%;
@@ -467,17 +398,18 @@ input {
 .is-true-radio {
     width: 15px; /* Adjust as needed to make it bigger */
     height: 15px;
-    margin-right: 5px; /* Adjust spacing between radio button and option input */
+    margin-right: 6px; /* Adjust spacing between radio button and option input */
     display: inline-block;
+    margin-left: 6px;
 }
 
 .remove-option-button {
-    width: calc(25% - 5px); /* Adjust as needed */
+    width: calc(15% - 5px); /* Adjust as needed */
     padding: 5px;
     cursor: pointer;
     box-sizing: border-box;
     display: inline-block;
-    background-color: #f44336;
+    background-color: #ee4d41;
     color: white;
     border: none;
 }

@@ -63,36 +63,47 @@ function handleResultClick(event) {
 }
 
 function getProductsFromChoosenCompany(selectedCompany) {
-    c_db.findCompanyByName(selectedCompany, (company) => {
+	c_db.findCompanyByName(selectedCompany, (company) => {
 
 		// Save the selected company
 		g_Company = company;
 
-        const companyProducts = company.products;
-        const dropdown = document.getElementById('product-dropdown');
+		const companyProducts = company.products;
+		const dropdown = document.getElementById('product-dropdown');
 
-        // Clear existing options
-        dropdown.innerHTML = '';
+		// Clear existing options
+		dropdown.innerHTML = '';
 
-        // Add products to the dropdown
-        companyProducts.forEach(product => {
-            const option = document.createElement('option');
-            option.value = product;
-            option.text = product;
-            dropdown.appendChild(option);
-        });
-    });
+		// Add products to the dropdown
+		companyProducts.forEach(product => {
+			const option = document.createElement('option');
+			option.value = product;
+			option.text = product;
+			dropdown.appendChild(option);
+		});
+	});
 }
 
 document.getElementById('product-dropdown').addEventListener('change', handleProductSelection);
 
 function handleProductSelection(event) {
-    const selectedProduct = event.target.value;
-    
-	p_db.findProductByName(selectedProduct, (product) => {
-		console.log(product);
-		displayQuestionsAndOptions(product);
-	});
+
+	p_db.isExistProductByName(event.target.value)
+		.then((productExists) => {
+			if (productExists) {
+				const selectedProduct = event.target.value;
+
+				p_db.findProductByName(selectedProduct, (product) => {
+					console.log(product);
+					displayQuestionsAndOptions(product);
+				});
+			} else {
+				alert(`"${event.target.value}" adında bir ürün yok.`);
+			}
+		})
+		.catch((error) => {
+			console.error(`Error checking product existence: ${error}`);
+		});
 }
 
 function setAllCompanies() {

@@ -2,25 +2,25 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Product Classes Questions</title>
-	<link rel="stylesheet" href="../assets/styles-test.css">
-	<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Classes Questions</title>
+    <link rel="stylesheet" href="../assets/styles-test.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
-	<nav class="sidebar close">
+    <nav class="sidebar close">
         <header>
             <div class="text header-text">
-                    <span class="name">Audit</span>
-                 
-                </div>
+                <span class="name">Audit</span>
+
+            </div>
         </header>
 
         <div class="menu-bar">
             <div class="menu">
-                
+
                 <ul class="menu-links">
                     <li class="nav-link">
                         <a href="mainpage.html">
@@ -35,14 +35,14 @@
                             <span class="text nav-text">Firma Ekle</span>
                         </a>
                     </li>
-                    
+
                     <li class="nav-link">
                         <a href="index.html">
                             <i class="bx bx-add-to-queue icon"></i>
                             <span class="text nav-text">Ürün Ekle</span>
                         </a>
                     </li>
-                    
+
                     <li class="nav-link">
                         <a href="edit.html">
                             <i class="bx bx-edit icon "></i>
@@ -59,7 +59,7 @@
                         <span class="text nav-text">Geri</span>
                     </a>
                 </li>
-                
+
                 <li class="">
                     <a href="#">
                         <i class="bx bx-log-out icon"></i>
@@ -70,30 +70,34 @@
 
         </div>
     </nav>
-	
-	<section class="home">
-		<div id="search-container">
-			<input type="text" id="search-input" placeholder="Type your search">
-			<ul id="search-results"></ul>
-		</div>
 
-		<div id="questions-container"></div>
+    <section class="home">
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="Type your search">
+            <ul id="search-results"></ul>
+        </div>
 
-		<form id="edit-form" style="display: none;">
-			<input id="edit-input" type="text">
-			<button type="submit">Submit</button>
-		</form>
+        <div id="questions-container"></div>
+
+        <form id="edit-form" style="display: none;">
+            <input id="edit-input" type="text">
+            <button type="submit">Submit</button>
+        </form>
 
         <div id="context-menu" style="display: none;">
             <ul>
                 <li id="delete-option">delete</li>
+                <li id="rename-option">rename</li>
             </ul>
         </div>
 
-	</section>
+    </section>
 
-	<script type="module" src="../productJS/p_editSearch.js"></script>
+    <script type="module" src="../productJS/p_editSearch.js"></script>
     <script type="module" src="../productJS/p_context.js"></script>
+
+    <script type="module" src="../scripts/script.js"></script>
+
 </body>
 
 </html>

@@ -24,13 +24,12 @@ async function showResults() {
     // Clear previous results
     searchResults.innerHTML = '';
 
-    // Display up to 5 filtered results as clickable buttons and sort them alphabetically
-    for (var i = 0; i < Math.min(filteredOptions.length, 5); i++) {
+    // Display all the filtered results as clickable buttons and sort them alphabetically
+    for (var i = 0; i < filteredOptions.length; i++) {
         var listItem = document.createElement('li');
         listItem.className = 'result-item-product';
         listItem.textContent = filteredOptions[i].name;
 
-        // Check if the product is in the selectedProducts array and apply the class
         if (selectedProducts.includes(filteredOptions[i].name)) {
             listItem.classList.add('selected-item');
         }
@@ -53,18 +52,6 @@ searchInput.addEventListener('focus', function () {
 	showResults();
 });
 
-// Event listener to close results when clicking outside the search container
-document.addEventListener('click', function (event) {
-	var searchContainer = document.getElementById('products-search-container');
-	var searchResults = document.getElementById('product-search-results');
-
-	// Check if the click target is outside the search container
-	if (!searchContainer.contains(event.target) && !searchResults.contains(event.target)) {
-		// Hide the results
-		searchResults.style.display = 'none';
-	}
-});
-
 function handleResultClick(event) {
     var selectedProductName = event.target.textContent;
     var selectedProductIndex = selectedProducts.indexOf(selectedProductName);
@@ -76,12 +63,11 @@ function handleResultClick(event) {
     } else {
         // Product is already in the array, remove it
         selectedProducts.splice(selectedProductIndex, 1);
-        event.target.classList.remove('selected-item'); // Remove the highlighting class
+        event.target.classList.remove('selected-item'); // Remove the class for highlighting
     }
 
     console.log('Selected Products:', selectedProducts);
 }
-
 
 function setAllProduct() {
     return new Promise((resolve) => {
@@ -101,13 +87,3 @@ document.getElementById('search-for-company-products-input').addEventListener('i
 
 // Event listener for handling result clicks
 document.getElementById('product-search-results').addEventListener('click', handleResultClick);
-
-// Event listener to close results when clicking outside the search container
-document.addEventListener('click', function (event) {
-	var searchContainer = document.getElementById('products-search-container');
-	var searchResults = document.getElementById('product-search-results');
-
-	if (!searchContainer.contains(event.target) && !searchResults.contains(event.target)) {
-		searchResults.style.display = 'none';
-	}
-});

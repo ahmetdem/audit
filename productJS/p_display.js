@@ -164,6 +164,7 @@ function createFinalForm(firmName, storeName, selectedOptions) {
 
     // Write the form content to the text file
     fs.writeFileSync(filePath, formContent);
+    console.log(`Form content written to ${filePath}`);
 
-    console.log('Final form created successfully!');
+    alert('Form Başarıyla Oluşturuldu!');
 }

@@ -2,98 +2,101 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Product Classes Questions</title>
-	<link rel="stylesheet" href="../assets/styles.css">
-	<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Classes Questions</title>
+    <link rel="stylesheet" href="../assets/styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
-  <nav class="sidebar close">
-    <header>
-        <div class="text header-text">
+    <nav class="sidebar close">
+        <header>
+            <div class="text header-text">
                 <span class="name">Audit</span>
-             
+
             </div>
-    </header>
+        </header>
 
-    <div class="menu-bar">
-        <div class="menu">
-            
-          <ul class="menu-links">
-            <li class="nav-link">
-                <a href="mainpage.html">
-                    <i class="bx bx-home-alt icon"></i>
-                    <span class="text nav-text">Ana Sayfa
-                    </span>
-                </a>
-            </li>
-            <li class="nav-link">
-                <a href="firma.html">
-                    <i class="bx bx-add-to-queue icon"></i>
-                    <span class="text nav-text">Firma Ekle</span>
-                </a>
-            </li>
-            
-            <li class="nav-link">
-                <a href="index.html">
-                    <i class="bx bx-add-to-queue icon"></i>
-                    <span class="text nav-text">Ürün Ekle</span>
-                </a>
-            </li>
-            
-            <li class="nav-link">
-                <a href="edit.html">
-                    <i class="bx bx-edit icon "></i>
-                    <span class="text nav-text">Editle</span>
-                </a>
-            </li>
-            </ul>
+        <div class="menu-bar">
+            <div class="menu">
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="mainpage.html">
+                            <i class="bx bx-home-alt icon"></i>
+                            <span class="text nav-text">Ana Sayfa
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="firma.html">
+                            <i class="bx bx-add-to-queue icon"></i>
+                            <span class="text nav-text">Firma Ekle</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="index.html">
+                            <i class="bx bx-add-to-queue icon"></i>
+                            <span class="text nav-text">Ürün Ekle</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="edit.html">
+                            <i class="bx bx-edit icon "></i>
+                            <span class="text nav-text">Editle</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="">
+                    <a href="mainpage.html">
+                        <i class="bx bx-arrow-back icon"></i>
+                        <span class="text nav-text">Geri</span>
+                    </a>
+                </li>
+
+                <li class="">
+                    <a href="#">
+                        <i class="bx bx-log-out icon"></i>
+                        <span class="text nav-text">Çıkış</span>
+                    </a>
+                </li>
+            </div>
+
+        </div>
+    </nav>
+
+
+
+    <section class="home">
+        <div id="message-container"></div>
+
+        <div id="add-product" class="form-container">
+            <div class="form-control">
+                <label for="product-name">Ürün adı</label>
+                <input type="text" id="product-name" placeholder="Ürün adı">
+            </div>
+
+            <div id="questions-container" class="questions-container">
+
+            </div>
+
+            <button id="form-buttons" type="button" class="add-question-button">Soru Ekle</button>
+            <button id="form-buttons" type="button" class="display-button">Göster</button>
         </div>
 
-        <div class="bottom-content">
-            <li class="">
-                <a href="mainpage.html">
-                    <i class="bx bx-arrow-back icon"></i>
-                    <span class="text nav-text">Geri</span>
-                </a>
-            </li>
-            
-            <li class="">
-                <a href="#">
-                    <i class="bx bx-log-out icon"></i>
-                    <span class="text nav-text">Çıkış</span>
-                </a>
-            </li>
-        </div>
+    </section>
 
-    </div>
-</nav>
+    <script type="module" src="../scripts/script.js"></script>
+    <script type="module" src="../productJS/p_form.js"></script>
 
+    <script type="module" src="../scripts/script.js"></script>
 
-
-<section class="home">
-  <div id="message-container"></div>
-
-  <div id="add-product" class="form-container">
-    <div class="form-control">
-      <label for="product-name">Ürün adı</label>
-      <input type="text" id="product-name" placeholder="Ürün adı">
-    </div>
-
-    <div id="questions-container" class="questions-container">
-    
-    </div>
-
-    <button id="form-buttons" type="button" class="add-question-button">Soru Ekle</button>
-    <button id="form-buttons" type="button" class="display-button">Göster</button>
-  </div>
-      
-</section>
-
-  <script type="module" src="../scripts/script.js"></script>
-  <script type="module" src="../productJS/p_form.js"></script>
 </body>
 
 </html>

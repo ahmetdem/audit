@@ -101,6 +101,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
 }
+
 .home {
     position: relative;
     left: 250px;
@@ -129,13 +130,63 @@ body {
     text-align: center;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
+.component-text {
+    font-size: 150%;
+    font-weight: bold;
+    color: #4a4b4c;
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.active {
+    background: var(--primary-color) !important;
+    color: var(--sidebar-color) !important;
+    transition: var(--tran-04) !important;
+    border-radius: 6px;
+}
+
+.sidebar li.active a,
+.sidebar li.active .icon,
+.sidebar li.active .text {
+    color: var(--sidebar-color) !important;
+    transition: var(--tran-02) !important;
+}
+
+.sidebar li.active a {
+    background: var(--primary-color) !important;
+}
+
 #add-company {
     width: 500px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 6px;
     background-color: #fff;
+    position: absolute;
+    top: 30px;
+    right: 60px;
+    transition: var(--tran-05); /* Add transition for smooth effects */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+
+    max-height: 720px;
+    overflow-y: auto; 
+
+    scrollbar-width: thin;
+    scrollbar-color: #eee #888;
+}
+
+#add-company::-webkit-scrollbar {
+    width: 12px;
+    display: none;
+}
+
+#add-company::-webkit-scrollbar-thumb {
+    background-color: #888;
+}
+
+#add-company::-webkit-scrollbar-track {
+    background-color: #eee;
 }
 
 #add-company form {
@@ -160,16 +211,23 @@ body {
 }
 
 #add-company form button {
+    
     cursor: pointer;
-    background-color: #337ab7;
-    color: #fff;
-    padding: 5px 10px;
-    border: 1px solid #337ab7;
-    border-radius: 3px;
+    background-color: var(--primary-color);;
+    color: var(--sidebar-color);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 35%;
+    margin: auto;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+   
 }
 
 #add-company form button:hover {
-    background-color: #286090;
+    background-color: #587fea; 
 }
 
 /* New styles to move the form to the right side */
@@ -187,7 +245,7 @@ body {
 #search-container-company {
     position: absolute;
     top: 30px;
-    left: 60px;
+    left: 50px;
     height: 39px;
     list-style: none;
     padding: 0;
@@ -239,22 +297,28 @@ body {
 }
 
 #company-info-container {
-    width: 500px;
-    margin: 0 auto;
+    width: 350px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #fff;
+    position: relative;
+    top:500px;
 }
-
 
 #products-search-container {
     width: 400px;
-    margin: 0 auto;
+    margin: 20px auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #fff;
+
+    max-height: 300px;
+    overflow-y: auto;
+
+    scrollbar-width: thin;
+    scrollbar-color: #eee #888;
 }
 
 #product-search-results {
@@ -272,6 +336,12 @@ body {
 #product-search-results li:hover {
     background-color: #f0f0f0;
 }
+
+.selected-item {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
 
 #search-results .result-item-company:hover {
     background-color: #f0f0f0;

@@ -129,6 +129,26 @@ body {
     text-align: center;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
+
+.active {
+    background: var(--primary-color) !important;
+    color: var(--sidebar-color) !important;
+    transition: var(--tran-04) !important;
+    border-radius: 6px;
+}
+
+.sidebar li.active a,
+.sidebar li.active .icon,
+.sidebar li.active .text {
+    color: var(--sidebar-color) !important;
+    transition: var(--tran-02) !important;
+}
+
+.sidebar li.active a {
+    background: var(--primary-color) !important;
+}
+
+
 /* STYLES FOR SEARCH CONTAINER AND THE RESULT LIST */
 
 #search-results .result-item-company:hover {

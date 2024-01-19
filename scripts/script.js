@@ -1,33 +1,20 @@
-import { Product } from '../productJS/product.js';
-import { p_db } from '../productJS/p_database.js';
-
 document.addEventListener('DOMContentLoaded', function () {
 
-  const getProductButton = document.getElementById('getProductButton');
-  const resetDatabaseButton = document.getElementById('resetDatabaseButton');
+  var navLinks = document.querySelectorAll('.nav-link');
+  var currentPage = window.location.pathname.split('/').pop();
 
-  resetDatabaseButton.addEventListener('click', function () {
-    p_db.resetDatabase();
-    showMessage('Database was reset successfully!', 'green');
-  });
+  // Iterate through each nav link and apply highlighting
+  navLinks.forEach(function (link) {
+    var linkHref = link.querySelector('a').href.split('/').pop();
 
-  getProductButton.addEventListener('click', function () {
-    const productName = document.getElementById('productNameToGet').value;
-
-    p_db.findProductByName(productName, (document) => {
-      if (document) {
-        showMessage(`Product ${document.name} was found!`, 'green');
-        const product = new Product(document.id, document.name, document.questions);
-        product.displayInfo();
-      } else {
-        showMessage(`Product ${productName} was not found!`, 'red');
+    if (linkHref === currentPage) {
+      if (!link.classList.contains('active')) {
+        link.classList.add('active'); // Apply the 'active' class to highlight
       }
-    });
+      
+      link.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent the default link behavior (e.g., page reload)
+      });
+    }
   });
 });
-
-function showMessage(message, color) {
-  const messageContainer = document.getElementById('message-container');
-  messageContainer.textContent = message;
-  messageContainer.style.color = color;
-}

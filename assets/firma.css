@@ -297,15 +297,18 @@ body {
 }
 
 #company-info-container {
-    position: relative;
-    width: 100%;
-    padding: 20px;
-
-    margin-top: 20px;
-
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
+    
+        position: relative;
+        width: 300px; /* Set a fixed width */
+        padding: 20px;
+        margin-top: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+        overflow-x: auto; /* Enable horizontal scrolling if content exceeds width */
+        overflow-y: auto; /* Enable vertical scrolling if content exceeds height */
+        max-height: 300px;
+    
 }
 
 #products-search-container {

@@ -351,4 +351,21 @@ body {
     border-color: #3498db; /* Change the border color on focus */
     background-color: #fff; /* Change the background color on focus */
 }
+#questions-container input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    box-shadow: 5px 4px 8px rgba(0, 0, 0, 0.2);
+}
 
+#questions-container input[type="text"]::placeholder {
+    color: #999;
+}
+
+#questions-container input[type="text"]:focus {
+    outline: none;
+    border-color: #695CFE; /* Change the border color when the input is focused */
+}

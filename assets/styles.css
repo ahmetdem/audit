@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
 body {
     height: 100vh;
     background: var(--body-color);
     transition: var(--tran-05);
     margin: 0;  /* Add margin reset for body */
-    user-select: none;
+
+    user-select: none; /* Disable text selection */
 }
 
 * {
@@ -14,6 +14,7 @@ body {
     padding: 0;
     box-sizing: border-box;
 }
+
 :root {
     --body-color: #E4E9F7;
     --sidebar-color: #FFF;
@@ -26,6 +27,7 @@ body {
     --tran-04: all 0.4s ease;
     --tran-05: all 0.5s ease;
 }
+
 .sidebar .text {
     font-size: 16px;
     font-weight: 500;
@@ -41,7 +43,7 @@ body {
     left: 0;
     height: 100%;
     width: 250px;
-    padding: 16px 14px;
+    padding: 10px 14px;
     background: var(--sidebar-color);
     transition: var(--tran-05);
     z-index: 100;
@@ -99,7 +101,6 @@ body {
     flex-direction: column;
     justify-content: space-between;
 }
-
 .home {
     position: relative;
     left: 250px;
@@ -111,22 +112,22 @@ body {
     flex-direction: column;
     padding: 20px;
 }
-
 .home .text {
     font-size: 30px;
     font-weight: 500;
     color: var(--text-color);
     padding: 8px 40px;
 }
+.text.header-text {
+    text-align: center;
+}
+
 .name {
     font-size: 260%;
     font-weight: bold;
     color: #4a4b4c;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-
-}
-.text.header-text {
     text-align: center;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .active {
@@ -146,7 +147,6 @@ body {
 .sidebar li.active a {
     background: var(--primary-color) !important;
 }
-
 #add-product {
     width: 500px;
     margin: 0 auto;

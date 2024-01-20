@@ -1,7 +1,11 @@
 import { c_db } from './c_database.js';
 
 let allCompanies = [];
-let companiesLoaded = false;
+var currentSelectedCompany = null;
+
+export const companiesState = {
+	companiesLoaded: false
+};
 
 const container = document.getElementById('company-info-container');
 container.style.display = 'none';
@@ -15,7 +19,8 @@ async function showResults() {
 	var searchInput = document.getElementById('search-input').value.toLowerCase();
 	var searchResults = document.getElementById('search-results');
 
-	if (!companiesLoaded) {
+	if (!companiesState.companiesLoaded) {
+		console.log('Companies are not loaded yet!');
 		await setAllCompanies();
 	}
 
@@ -26,10 +31,14 @@ async function showResults() {
 	searchResults.innerHTML = '';
 
 	// Display up to 5 filtered results as clickable buttons and sort them alphabetically
-	for (var i = 0; i < Math.min(filteredOptions.length, 20); i++) {
+	for (var i = 0; i < Math.min(filteredOptions.length, 7); i++) {
 		var listItem = document.createElement('li');
 		listItem.className = 'result-item-company';
 		listItem.textContent = filteredOptions[i].name;
+
+		if (filteredOptions[i].name === currentSelectedCompany) {
+			listItem.classList.add('selected');
+		}
 
 		searchResults.appendChild(listItem);
 	}
@@ -48,15 +57,24 @@ searchInput.addEventListener('input', function () {
 showResults();
 
 function handleResultClick(event) {
-	var selectedCompany = event.target.textContent;
+    var selectedCompany = event.target.textContent;
 
-	// Remove the 'selected' class from all result items
-	document.querySelectorAll('#search-results .result-item-company').forEach(item => {
-		item.classList.remove('selected');
-	});
+    // Check if the clicked item is already selected
+    if (selectedCompany === currentSelectedCompany) {
+        return; // Do nothing if the same item is clicked again
+    }
 
-	event.target.classList.add('selected');
-	displayCompanyDetails(selectedCompany);
+    // Remove the 'selected' class from the previously selected item
+    var previouslySelected = document.querySelector('.result-item-company.selected');
+    if (previouslySelected) {
+        previouslySelected.classList.remove('selected');
+    }
+
+    // Add the 'selected' class to the clicked item
+    event.target.classList.add('selected');
+    currentSelectedCompany = selectedCompany;
+
+    displayCompanyDetails(selectedCompany);
 }
 
 // Function to display details of the selected Company
@@ -70,7 +88,7 @@ function setAllCompanies() {
 	return new Promise((resolve) => {
 		c_db.findAllCompanies((companies) => {
 			allCompanies = companies;
-			companiesLoaded = true;
+			companiesState.companiesLoaded = true;
 			console.log(allCompanies);
 			resolve();  // Resolve the promise once Company are loaded
 		});

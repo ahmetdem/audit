@@ -1,11 +1,14 @@
 import { c_db } from './c_database.js';
 import { p_db } from '../productJS/p_database.js';
-
 import { displayQuestionsAndOptions } from '../productJS/p_display.js';
 
 let allCompanies = [];
 let companiesLoaded = false;
+var currentSelectedCompany = null;
+
 export let g_Company;
+
+let companyLength = 0;
 
 function fetchCompany(searchInput) {
 	// Simulating server-side logic with client-side filtering
@@ -26,17 +29,28 @@ async function showResults() {
 	// Clear previous results
 	searchResults.innerHTML = '';
 
-	// Display up to 5 filtered results as clickable buttons and sort them alphabetically
-	for (var i = 0; i < Math.min(filteredOptions.length, 5); i++) {
+	companyLength = Math.min(filteredOptions.length, 7);
+
+	for (var i = 0; i < companyLength; i++) {
 		var listItem = document.createElement('li');
+		
 		listItem.className = 'result-item-company';
 		listItem.textContent = filteredOptions[i].name;
+
+		if (filteredOptions[i].name === currentSelectedCompany) {
+			listItem.classList.add('selected');
+		}
 
 		searchResults.appendChild(listItem);
 	}
 
 	// Show the results container
 	searchResults.style.display = 'block';
+
+	// adjust the place of the dropdown menu based on the number of companies found
+	// const dropdown = document.getElementById('product-dropdown');
+	// console.log(companyLength);
+	// dropdown.style.top = `${(companyLength * 70) + 10}px`;
 }
 
 const searchInput = document.getElementById('search-input');
@@ -51,12 +65,20 @@ showResults();
 function handleResultClick(event) {
 	var selectedCompany = event.target.textContent;
 
-	// Remove the 'selected' class from all result items
-	document.querySelectorAll('#search-results .result-item-company').forEach(item => {
-		item.classList.remove('selected');
-	});
+    // Check if the clicked item is already selected
+    if (selectedCompany === currentSelectedCompany) {
+        return; // Do nothing if the same item is clicked again
+    }
 
-	event.target.classList.add('selected');
+    // Remove the 'selected' class from the previously selected item
+    var previouslySelected = document.querySelector('.result-item-company.selected');
+    if (previouslySelected) {
+        previouslySelected.classList.remove('selected');
+    }
+
+    // Add the 'selected' class to the clicked item
+    event.target.classList.add('selected');
+    currentSelectedCompany = selectedCompany;
 
 	// choose the selected company
 	getProductsFromChoosenCompany(selectedCompany);

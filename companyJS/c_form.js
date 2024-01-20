@@ -1,6 +1,7 @@
 import { Company } from './company.js';
 import { c_db } from './c_database.js';
 import { selectedProducts } from './c_p_search.js';
+import { companiesState } from './c_search.js';
 
 document.addEventListener('DOMContentLoaded', function () {
 	const addCompanyButton = document.querySelector('.add-company-button');
@@ -22,6 +23,13 @@ document.addEventListener('DOMContentLoaded', function () {
 			const companyFaxNum = document.getElementById('company-fax-number').value;
 			const companyTaxNum = document.getElementById('company-tax-number').value;
 
+			if(c_db.findCompanyByName(companyName, (document) => {
+				if (document) {
+					alert('This company already exists!');
+					return;
+				}
+			}));
+
 			c_db.getNumberOfElements().then((count) => {
 				const company = new Company(count + 1, companyName, companyAdress, 
 					companyMailAdress, companyFaxNum, companyTaxNum, [...selectedProducts]);
@@ -40,5 +48,9 @@ document.addEventListener('DOMContentLoaded', function () {
 		} else {
 			alert('Please fill all the inputs!');
 		}
+
+		companiesState.companiesLoaded = false;
+
+		location.reload();
 	});
 });

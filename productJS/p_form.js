@@ -14,10 +14,10 @@ document.addEventListener('DOMContentLoaded', function () {
 		newQuestionControl.classList.add('form-control');
 		newQuestionControl.innerHTML = `
 		<label for="soru-${questionNumber}">Soru ${questionNumber}</label>
-		<input type="text" id="soru-${questionNumber}" placeholder="Placeholder">
+		<input type="text" id="soru-${questionNumber}" placeholder="Placeholder" style="display: inline-block; width: calc(90% - 20px); margin-right: 10px;">
+		<button type="button" class="remove-question-button" style="display: inline-block;">X</button>
 		<div class="options-container"></div>
-		<button type="button" class="add-option-button">+</button>
-		<button type="button" class="remove-question-button">X</button>`;
+		<button type="button" class="add-option-button">+</button>`;
 
 		questionsContainer.appendChild(newQuestionControl);
 
@@ -56,6 +56,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		removeQuestionButton.addEventListener('click', function () {
 			newQuestionControl.remove();
+
+			// Update the question numbers
+			const questions = questionsContainer.querySelectorAll('.form-control');
+			questions.forEach(function (question, index) {
+				question.querySelector('label').textContent = `Soru ${index + 1}`;
+				question.querySelector('input').id = `soru-${index + 1}`;
+				question.querySelectorAll('.option-input').forEach(function (optionInput) {
+					optionInput.name = `soru-${index + 1}`;
+				});
+				question.querySelectorAll('.is-true-radio').forEach(function (isTrueRadio) {
+					isTrueRadio.name = `is-true-${index + 1}`;
+				});
+			});
 		});
 	});
 

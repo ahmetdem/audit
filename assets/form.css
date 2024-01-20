@@ -233,11 +233,10 @@ body {
 
 /* New styles for the dropdown menu */
 #product-dropdown {
-    position: absolute;
-    top: 30%;
-    left: 60px;
-    width: 200px; /* Set the width according to your preference */
+    position: relative;
+    width: 100%; /* Set the width according to your preference */
     padding: 8px;
+    margin-top: 20px;
     background: var(--primar-color-light);
     border-radius: 6px;
     box-shadow: 5px 4px 8px rgba(0, 0, 0, 0.2);
@@ -247,6 +246,10 @@ body {
 #product-dropdown option {
     background: var(--primar-color-light);
     color: var(--text-color);
+
+    font-size: 16px;
+    font-weight: 500;
+
     border-radius: 6px;
     padding: 8px;
 }
@@ -348,3 +351,4 @@ body {
     border-color: #3498db; /* Change the border color on focus */
     background-color: #fff; /* Change the background color on focus */
 }
+

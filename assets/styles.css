@@ -322,6 +322,8 @@ input {
     color: white;
     border: none;
     border-radius:6px;
+
+    cursor: pointer;
 }
 
 .remove-option-button,

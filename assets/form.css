@@ -313,11 +313,13 @@ body {
 .options-container p:hover {
     background-color: #f0f0f0;
     cursor: pointer;
+    border-radius: 6px;
 }
 
 .options-container .selected {
     background-color: #f0f0f0; /* Change the background color to your desired highlight color */
     font-weight: bold; /* Change the font weight or any other styles as desired */
+    border-radius: 6px;
 }
 
 #submit-button {
@@ -351,6 +353,7 @@ body {
     border-color: #3498db; /* Change the border color on focus */
     background-color: #fff; /* Change the background color on focus */
 }
+
 #questions-container input[type="text"] {
     width: 100%;
     padding: 8px;

@@ -146,7 +146,13 @@ document.addEventListener('DOMContentLoaded', function () {
 						p_db.insertProduct(product, function (newDocument) {
 							console.log(newDocument);
 							console.log('Product added successfully!');
+
+							alert('Ürün başarıyla eklendi!');
 						});
+
+						// Clear the form
+						document.getElementById('product-name').value = '';
+						questionsContainer.innerHTML = '';
 					}
 				});
 			});

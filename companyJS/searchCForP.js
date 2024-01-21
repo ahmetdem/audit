@@ -29,9 +29,7 @@ async function showResults() {
 	// Clear previous results
 	searchResults.innerHTML = '';
 
-	companyLength = Math.min(filteredOptions.length, 7);
-
-	for (var i = 0; i < companyLength; i++) {
+	for (var i = 0; i < filteredOptions.length; i++) {
 		var listItem = document.createElement('li');
 		
 		listItem.className = 'result-item-company';
@@ -46,11 +44,6 @@ async function showResults() {
 
 	// Show the results container
 	searchResults.style.display = 'block';
-
-	// adjust the place of the dropdown menu based on the number of companies found
-	// const dropdown = document.getElementById('product-dropdown');
-	// console.log(companyLength);
-	// dropdown.style.top = `${(companyLength * 70) + 10}px`;
 }
 
 const searchInput = document.getElementById('search-input');

@@ -1,5 +1,6 @@
 import { p_db } from "./p_database.js";
 import { productsState } from './p_editSearch.js';
+import { showResults } from "./p_editSearch.js";
 
 let g_product = null;
 
@@ -83,6 +84,10 @@ function toggleEditMode(textElement, inputElement, originalText, questionId, opt
         textElement.style.display = 'none';
         inputElement.value = originalText;
         inputElement.style.display = 'block';
+
+        inputElement.style.width = '100%'; 
+        inputElement.style.height = '30px';
+
         inputElement.focus(); // Set focus to the input
 
         // Add the keydown event listener
@@ -98,23 +103,42 @@ function toggleEditMode(textElement, inputElement, originalText, questionId, opt
 
 function exitEditMode(textElement, inputElement, originalText, questionId, optionId, isQuestion, handleKeyDown) {
     const updatedText = inputElement.value.trim();
+
     if (updatedText !== originalText) {
-        if (isQuestion) {
-            p_db.updateProductQuestionWithId(g_product, questionId, updatedText);
-        } else {
-            p_db.updateProductOptionWithId(g_product, questionId, optionId, updatedText);
-        }
+        p_db.updateProductWithId(g_product, questionId, optionId, updatedText, false)
+            .then(() => {
+                productsState.productsLoaded = false;
+                originalText = updatedText;
 
-        productsState.productsLoaded = false;
-        originalText = updatedText;
+                textElement.textContent = updatedText;
+                textElement.style.display = 'block';
+                inputElement.style.display = 'none';
+                
+                inputElement.style.width = textElement.offsetWidth + 'px';
+
+                // Remove the keydown event listener
+                inputElement.removeEventListener('keydown', handleKeyDown);
+
+                showResults();
+            })
+            .catch(error => {
+                console.error(error);
+                // Handle the error appropriately if needed
+            });
+    } else {
+        // If no update is needed, proceed with the rest of the logic
+        textElement.style.display = 'block';
+        inputElement.style.display = 'none';
+        
+        inputElement.style.width = textElement.offsetWidth + 'px';
+
+        // Remove the keydown event listener
+        inputElement.removeEventListener('keydown', handleKeyDown);
+
+        showResults();
     }
-    textElement.textContent = updatedText;
-    textElement.style.display = 'block';
-    inputElement.style.display = 'none';
-
-    // Remove the keydown event listener
-    inputElement.removeEventListener('keydown', handleKeyDown);
 }
+
 
 function cancelEditMode(textElement, inputElement, originalText, handleKeyDown) {
     // Revert changes and exit edit mode

@@ -31,7 +31,7 @@ async function showResults() {
 	searchResults.innerHTML = '';
 
 	// Display up to 5 filtered results as clickable buttons and sort them alphabetically
-	for (var i = 0; i < Math.min(filteredOptions.length, 7); i++) {
+	for (var i = 0; i < filteredOptions.length; i++) {
 		var listItem = document.createElement('li');
 		listItem.className = 'result-item-company';
 		listItem.textContent = filteredOptions[i].name;
@@ -122,33 +122,31 @@ function displayCompanyInfo(company) {
     companyContainer.id = company.id; // Set the id of the companyContainer
 
     const companyNameElement = document.createElement('p');
-    companyNameElement.textContent = `Company Name: ${company.name}`;
+    companyNameElement.textContent = `Ad: ${company.name}`;
     companyContainer.appendChild(companyNameElement);
 
     const companyAddressElement = document.createElement('p');
-    companyAddressElement.textContent = `Company Address: ${company.adress}`;
+    companyAddressElement.textContent = `Adres: ${company.adress}`;
     companyContainer.appendChild(companyAddressElement);
 
     const companyMailElement = document.createElement('p');
-    companyMailElement.textContent = `Company Mail Address: ${company.mailAdress}`;
+    companyMailElement.textContent = `Mail Adresi: ${company.mailAdress}`;
     companyContainer.appendChild(companyMailElement);
 
     const companyFaxElement = document.createElement('p');
-    companyFaxElement.textContent = `Company Fax Number: ${company.faxNum}`;
+    companyFaxElement.textContent = `Faks No: ${company.faxNum}`;
     companyContainer.appendChild(companyFaxElement);
 
     const companyTaxElement = document.createElement('p');
-    companyTaxElement.textContent = `Company Tax Number: ${company.taxNum}`;
+    companyTaxElement.textContent = `Vergi No: ${company.taxNum}`;
     companyContainer.appendChild(companyTaxElement);
 
-    // Display the products
-    const productsContainer = document.createElement('div');
-    productsContainer.classList.add('products-container');
-    company.products.forEach(product => {
-        const productElement = document.createElement('p');
-        productElement.textContent = `Product: ${product}`;
-        productsContainer.appendChild(productElement);
-    });
+
+    // Display the products with a comma between them
+	const productsContainer = document.createElement('div');
+	productsContainer.classList.add('products-container');
+	productsContainer.textContent = `Ürünler: ${company.products.join(', ')}`;
+
 
     companyContainer.appendChild(productsContainer);
     container.appendChild(companyContainer);

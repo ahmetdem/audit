@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 body {
     height: 100vh;
     background: var(--body-color);
     transition: var(--tran-05);
-    margin: 0;  /* Add margin reset for body */
+    margin: 0;
+    /* Add margin reset for body */
 
-    user-select: none; /* Disable text selection */
+    user-select: none;
+    /* Disable text selection */
 }
 
 * {
@@ -113,12 +116,14 @@ body {
     flex-direction: column;
     padding: 20px;
 }
+
 .home .text {
     font-size: 30px;
     font-weight: 500;
     color: var(--text-color);
     padding: 8px 40px;
 }
+
 .text.header-text {
     text-align: center;
 }
@@ -130,6 +135,7 @@ body {
     text-align: center;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
+
 .component-text {
     font-size: 150%;
     font-weight: bold;
@@ -166,11 +172,12 @@ body {
     position: absolute;
     top: 30px;
     right: 50px;
-    transition: var(--tran-05); /* Add transition for smooth effects */
+    transition: var(--tran-05);
+    /* Add transition for smooth effects */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 
     max-height: 720px;
-    overflow-y: auto; 
+    overflow-y: auto;
 
     scrollbar-width: thin;
     scrollbar-color: #eee #888;
@@ -211,9 +218,10 @@ body {
 }
 
 #add-company form button {
-    
+
     cursor: pointer;
-    background-color: var(--primary-color);;
+    background-color: var(--primary-color);
+    ;
     color: var(--sidebar-color);
     padding: 10px;
     border: 1px solid #ccc;
@@ -223,18 +231,20 @@ body {
     font-size: 14px;
     font-weight: 600;
     transition: background-color 0.3s ease;
-   
+
 }
 
 #add-company form button:hover {
-    background-color: #587fea; 
+    background-color: #587fea;
 }
 
 /* New styles to move the form to the right side */
 @media (min-width: 768px) {
     #add-company {
-        width: 500px; /* Adjust the width as needed */
-        margin: 0; /* Remove auto margin */
+        width: 500px;
+        /* Adjust the width as needed */
+        margin: 0;
+        /* Remove auto margin */
         position: absolute;
         top: 30px;
         right: 40px;
@@ -254,7 +264,8 @@ body {
 
 #search-container-company input {
     height: 100%;
-    width: 100%;  /* Set width to 100% */
+    width: 100%;
+    /* Set width to 100% */
     border: none;
     outline: none;
     box-shadow: 5px 4px 8px rgba(0, 0, 0, 0.2);
@@ -270,6 +281,25 @@ body {
     padding: 0;
     margin-top: 10px;
     border-radius: 6px;
+
+    max-height: 420px;
+    overflow-y: auto;
+
+    scrollbar-width: thin;
+    scrollbar-color: #eee #888;
+}
+
+#search-results::-webkit-scrollbar {
+    width: 12px;
+    display: none;
+}
+
+#search-results::-webkit-scrollbar-thumb {
+    background-color: #888;
+}
+
+#search-results::-webkit-scrollbar-track {
+    background-color: #eee;
 }
 
 #search-results li {
@@ -297,18 +327,20 @@ body {
 }
 
 #company-info-container {
-    
-        position: relative;
-        width: 300px; /* Set a fixed width */
-        padding: 20px;
-        margin-top: 20px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        background-color: #fff;
-        overflow-x: auto; /* Enable horizontal scrolling if content exceeds width */
-        overflow-y: auto; /* Enable vertical scrolling if content exceeds height */
-        max-height: 300px;
-    
+    position: relative;
+    width: 315px;
+    /* Set a fixed width */
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    overflow-x: auto;
+    /* Enable horizontal scrolling if content exceeds width */
+    overflow-y: auto;
+    /* Enable vertical scrolling if content exceeds height */
+    max-height: 300px;
+
 }
 
 #products-search-container {
@@ -354,10 +386,12 @@ body {
 }
 
 #search-results .result-item-company {
-    padding: 12px; /* Increase padding for a more spacious feel */
+    padding: 12px;
+    /* Increase padding for a more spacious feel */
     border-bottom: 1px solid #ccc;
     transition: background-color 0.3s ease;
-    border-radius: 8px; /* Add rounded corners */
+    border-radius: 8px;
+    /* Add rounded corners */
 }
 
 #search-results .result-item-company:last-child {
@@ -370,17 +404,6 @@ body {
 }
 
 #search-results .result-item-company.selected {
-    background-color: #3498db; /* Change the background color to your desired selected color */
-    color: #fff; /* Change the text color to ensure readability */
+    background-color: #3498db;
+    color: #fff;
 }
-
- 
-
-
-
-
-
-
-
-
-

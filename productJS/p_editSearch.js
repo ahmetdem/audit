@@ -2,70 +2,78 @@ import { p_db } from './p_database.js';
 import { displayQuestionsAndOptions } from './p_edit.js';
 
 let allProducts = [];
+var currentSelectedProduct = null;
 
 export const productsState = {
-	productsLoaded: false
+    productsLoaded: false
 };
 
 function fetchProducts(searchInput) {
-	// Simulating server-side logic with client-side filtering
-	return allProducts.filter(option => option.name.toLowerCase().startsWith(searchInput.toLowerCase()));
+    // Simulating server-side logic with client-side filtering
+    return allProducts.filter(option => option.name.toLowerCase().startsWith(searchInput.toLowerCase()));
 }
 
-async function showResults() {
-	var searchInput = document.getElementById('search-input').value.toLowerCase();
-	var searchResults = document.getElementById('search-results');
+export async function showResults() {
+    var searchInputValue = document.getElementById('search-input').value.toLowerCase();
+    var searchResults = document.getElementById('search-results');
 
-	if (!productsState.productsLoaded) {
-        await setAllProducts();
+    await setAllProducts();
+
+    // Fetch products from the client-side based on the search input
+    var filteredOptions = fetchProducts(searchInputValue);
+
+    // Clear previous results
+    searchResults.innerHTML = '';
+
+
+    // Display up to 10 filtered results as clickable buttons and sort them alphabetically
+    for (var i = 0; i < filteredOptions.length; i++) {
+        var listItem = document.createElement('li');
+        listItem.className = 'result-item';
+        listItem.textContent = filteredOptions[i].name;
+
+        if (filteredOptions[i].name === currentSelectedProduct) {
+            listItem.classList.add('selected');
+        }
+
+        searchResults.appendChild(listItem);
     }
 
-	// Fetch products from the client-side based on the search input
-	var filteredOptions = fetchProducts(searchInput);
+    // Show the results container
+    searchResults.style.display = 'block';
 
-	// Clear previous results
-	searchResults.innerHTML = '';
-
-	// Display up to 5 filtered results as clickable buttons and sort them alphabetically
-	for (var i = 0; i < Math.min(filteredOptions.length, 10); i++) {
-		var listItem = document.createElement('li');
-		listItem.className = 'result-item';
-		listItem.textContent = filteredOptions[i].name;
-
-		searchResults.appendChild(listItem);
-	}
-
-	// Show the results container
-	searchResults.style.display = 'block';
+    console.log(filteredOptions);
 }
 
-const searchInput = document.getElementById('search-input');
-
 // Event listener for real-time updates
-searchInput.addEventListener('input', function () {
-	showResults(); // You can add debounce or delay here for better performance
+document.getElementById('search-input').addEventListener('input', function () {
+    showResults(); // You can add debounce or delay here for better performance
 });
 
-showResults();
-
 function handleResultClick(event) {
-    // Remove the 'selected' class from all result items
-    document.querySelectorAll('#search-results .result-item').forEach(item => {
-        item.classList.remove('selected');
-    });
+    var selectedProduct = event.target.textContent;
+
+    if (selectedProduct === currentSelectedProduct) {
+        return;
+    }
+
+    var previousSelectedProduct = document.querySelector('#search-results .selected');
+    if (previousSelectedProduct) {
+        previousSelectedProduct.classList.remove('selected');
+    }
 
     // Add the 'selected' class to the clicked item
     event.target.classList.add('selected');
+    currentSelectedProduct = selectedProduct;
 
-    var selectedProduct = event.target.textContent;
     displayProductDetails(selectedProduct);
 }
 
 // Function to display details of the selected product
 function displayProductDetails(productName) {
-	// display the product questions and options using the displayQuestionsAndOptions function
-	var selectedProduct = allProducts.find(product => product.name === productName);
-	displayQuestionsAndOptions(selectedProduct);
+    // display the product questions and options using the displayQuestionsAndOptions function
+    var selectedProduct = allProducts.find(product => product.name === productName);
+    displayQuestionsAndOptions(selectedProduct);
 }
 
 function setAllProducts() {
@@ -73,18 +81,13 @@ function setAllProducts() {
         p_db.findAllProducts((products) => {
             allProducts = products;
             productsState.productsLoaded = true;
-            console.log(allProducts);
             resolve();  // Resolve the promise once products are loaded
         });
     });
 }
 
-// Event listener for real-time updates
-document.getElementById('search-input').addEventListener('input', function () {
-	showResults();
-});
-
 // Event listener for handling result clicks
 document.getElementById('search-results').addEventListener('click', handleResultClick);
 
-
+// Initial call to showResults
+showResults();

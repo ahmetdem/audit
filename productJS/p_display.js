@@ -20,12 +20,12 @@ export function displayQuestionsAndOptions(product) {
     // Create input fields for firm questions
     const firmNameInput = document.createElement('input');
     firmNameInput.type = 'text';
-    firmNameInput.placeholder = 'Enter firm name';
+    firmNameInput.placeholder = 'Firma Adı Giriniz';
     container.appendChild(firmNameInput);
 
     const storeNameInput = document.createElement('input');
     storeNameInput.type = 'text';
-    storeNameInput.placeholder = 'Enter store name';
+    storeNameInput.placeholder = 'Şube Adı Giriniz';
     container.appendChild(storeNameInput);
 
     product.questions.forEach(question => {

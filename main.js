@@ -9,9 +9,12 @@ function createWindow() {
     minWidth: 400,
     minHeight: 300,
     titleBarStyle: 'hidden',
+    // resizable: false,
+    autoHideMenuBar: true,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
+      
     },
   });
 

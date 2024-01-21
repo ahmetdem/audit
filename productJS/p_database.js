@@ -85,62 +85,49 @@ export class DatabaseManager {
     });
   }
 
-  updateProductQuestionWithId(product, questionId, newQuestionText, callback = () => { }) {
-    console.log("updateProductQuestionWithId");
+  updateProductWithId(product, questionId, optionId, newText, isQuestion) {
+    return new Promise((resolve, reject) => {
+      console.log(`updateProductWithId - ${isQuestion ? 'Question' : 'Option'}`);
 
-    this.db.findOne({ _id: product._id }, (findErr, document) => {
-      if (findErr) {
-        console.error(findErr);
-      } else {
-        // Find the question to update
-        const questionIndex = document.questions.findIndex(q => q.id === questionId);
+      this.db.findOne({ _id: product._id }, (findErr, document) => {
+        if (findErr) {
+          console.error(findErr);
+          reject(findErr);
+        } else {
+          const questionIndex = document.questions.findIndex(q => q.id === questionId);
 
-        if (questionIndex !== -1) {
-          // Update the question text
-          document.questions[questionIndex].text = newQuestionText;
+          if (isQuestion) {
+            // Update question
+            if (questionIndex !== -1) {
+              document.questions[questionIndex].text = newText;
+            } else {
+              console.error("Question not found");
+              reject(new Error("Question not found"));
+              return;
+            }
+          } else {
+            // Update option
+            const optionIndex = document.questions[questionIndex].options.findIndex(o => o.id === optionId);
+            if (questionIndex !== -1 && optionIndex !== -1) {
+              document.questions[questionIndex].options[optionIndex].text = newText;
+            } else {
+              console.error("Question or option not found");
+              reject(new Error("Question or option not found"));
+              return;
+            }
+          }
 
           // Replace the entire document in the database
           this.db.update({ _id: product._id }, document, {}, (updateErr, numAffected) => {
             if (updateErr) {
               console.error(updateErr);
+              reject(updateErr);
             } else {
-              callback(numAffected);
+              resolve(numAffected);
             }
           });
-        } else {
-          console.error("Question not found");
         }
-      }
-    });
-  }
-
-  updateProductOptionWithId(product, questionId, optionId, newOptionText, callback = () => { }) {
-    console.log("updateProductOptionWithId");
-
-    this.db.findOne({ _id: product._id }, (findErr, document) => {
-      if (findErr) {
-        console.error(findErr);
-      } else {
-        // Find the question and option to update
-        const questionIndex = document.questions.findIndex(q => q.id === questionId);
-        const optionIndex = document.questions[questionIndex].options.findIndex(o => o.id === optionId);
-
-        if (questionIndex !== -1 && optionIndex !== -1) {
-          // Update the option text
-          document.questions[questionIndex].options[optionIndex].text = newOptionText;
-
-          // Replace the entire document in the database
-          this.db.update({ _id: product._id }, document, {}, (updateErr, numAffected) => {
-            if (updateErr) {
-              console.error(updateErr);
-            } else {
-              callback(numAffected);
-            }
-          });
-        } else {
-          console.error("Question or option not found");
-        }
-      }
+      });
     });
   }
 
@@ -157,3 +144,4 @@ export class DatabaseManager {
 }
 
 export const p_db = new DatabaseManager();
+

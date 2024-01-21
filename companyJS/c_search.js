@@ -128,10 +128,10 @@ function displayCompanyInfo(company) {
 	const companyNameElement = createEditableElement(`Ad: ${company.name}`);
 	companyContainer.appendChild(companyNameElement);
 
-	const companyAddressElement = createEditableElement(`Adres: ${company.adress}`);
+	const companyAddressElement = createEditableElement(`Adres: ${company.address}`);
 	companyContainer.appendChild(companyAddressElement);
 
-	const companyMailElement = createEditableElement(`Mail Adresi: ${company.mailAdress}`);
+	const companyMailElement = createEditableElement(`Mail Adresi: ${company.mailAddress}`);
 	companyContainer.appendChild(companyMailElement);
 
 	const companyFaxElement = createEditableElement(`Faks No: ${company.faxNum}`);
@@ -221,7 +221,7 @@ function exitEditMode(textElement, inputElement, originalText, handleKeyDown, id
         // Create the updatedCompany object
         const updatedCompany = {
             name: initialCompany.name,
-            address: initialCompany.address,  // Fix typo here
+            address: initialCompany.address,
             mailAdress: initialCompany.mailAdress,
             faxNum: initialCompany.faxNum,
             taxNum: initialCompany.taxNum,
@@ -259,11 +259,12 @@ function exitEditMode(textElement, inputElement, originalText, handleKeyDown, id
 
         // Call your updateCompanyInfo function
         c_db.updateCompanyInfo(initialCompany.id, updatedCompany)
-            .then(numReplaced => console.log(`Updated ${numReplaced} company(s)`))
-            .catch(err => console.error(err));
+            .then(() => {
+				console.log('Company updated successfully');
 
-		companiesState.companiesLoaded = false;
-		showResults();
+				companiesState.companiesLoaded = false;
+				showResults();
+			});
     }
 
     // Common logic for both cases

@@ -1,8 +1,8 @@
 export class Company {
-    constructor(id, name, adress, mailAdress, faxNum, taxNum, products = []) {
+    constructor(id, name, address, mailAdress, faxNum, taxNum, products = []) {
         this.id = id;
         this.name = name;
-		this.adress = adress;
+		this.address = address;
 		this.mailAdress = mailAdress;
 		this.faxNum = faxNum;
 		this.taxNum = taxNum;
@@ -12,7 +12,7 @@ export class Company {
     displayInfo() {
 		console.log(`Product ID: ${this.id}`);
 		console.log(`Product Name: ${this.name}`);
-		console.log(`Product Adress: ${this.adress}`);
+		console.log(`Product Address: ${this.address}`);
 		console.log(`Product Mail Adress: ${this.mailAdress}`);
 		console.log(`Product Fax Number: ${this.faxNum}`);
 		console.log(`Product Tax Number: ${this.taxNum}`);

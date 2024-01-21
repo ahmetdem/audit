@@ -57,24 +57,24 @@ searchInput.addEventListener('input', function () {
 showResults();
 
 function handleResultClick(event) {
-    var selectedCompany = event.target.textContent;
+	var selectedCompany = event.target.textContent;
 
-    // Check if the clicked item is already selected
-    if (selectedCompany === currentSelectedCompany) {
-        return; // Do nothing if the same item is clicked again
-    }
+	// Check if the clicked item is already selected
+	if (selectedCompany === currentSelectedCompany) {
+		return; // Do nothing if the same item is clicked again
+	}
 
-    // Remove the 'selected' class from the previously selected item
-    var previouslySelected = document.querySelector('.result-item-company.selected');
-    if (previouslySelected) {
-        previouslySelected.classList.remove('selected');
-    }
+	// Remove the 'selected' class from the previously selected item
+	var previouslySelected = document.querySelector('.result-item-company.selected');
+	if (previouslySelected) {
+		previouslySelected.classList.remove('selected');
+	}
 
-    // Add the 'selected' class to the clicked item
-    event.target.classList.add('selected');
-    currentSelectedCompany = selectedCompany;
+	// Add the 'selected' class to the clicked item
+	event.target.classList.add('selected');
+	currentSelectedCompany = selectedCompany;
 
-    displayCompanyDetails(selectedCompany);
+	displayCompanyDetails(selectedCompany);
 }
 
 // Function to display details of the selected Company
@@ -112,42 +112,178 @@ document.addEventListener('click', function (event) {
 	}
 });
 
+let initialCompany = null;
+
 function displayCompanyInfo(company) {
-    const container = document.getElementById('company-info-container');
+	const container = document.getElementById('company-info-container');
 	container.style.display = 'block';
-    container.innerHTML = ''; // Clear the container
+	container.innerHTML = ''; // Clear the container
 
-    const companyContainer = document.createElement('div');
-    companyContainer.classList.add('company-info-container');
-    companyContainer.id = company.id; // Set the id of the companyContainer
+	const companyContainer = document.createElement('div');
+	companyContainer.classList.add('company-info-container');
+	companyContainer.id = company.id; // Set the id of the companyContainer
 
-    const companyNameElement = document.createElement('p');
-    companyNameElement.textContent = `Ad: ${company.name}`;
-    companyContainer.appendChild(companyNameElement);
+	initialCompany = { ...company };
 
-    const companyAddressElement = document.createElement('p');
-    companyAddressElement.textContent = `Adres: ${company.adress}`;
-    companyContainer.appendChild(companyAddressElement);
+	const companyNameElement = createEditableElement(`Ad: ${company.name}`);
+	companyContainer.appendChild(companyNameElement);
 
-    const companyMailElement = document.createElement('p');
-    companyMailElement.textContent = `Mail Adresi: ${company.mailAdress}`;
-    companyContainer.appendChild(companyMailElement);
+	const companyAddressElement = createEditableElement(`Adres: ${company.adress}`);
+	companyContainer.appendChild(companyAddressElement);
 
-    const companyFaxElement = document.createElement('p');
-    companyFaxElement.textContent = `Faks No: ${company.faxNum}`;
-    companyContainer.appendChild(companyFaxElement);
+	const companyMailElement = createEditableElement(`Mail Adresi: ${company.mailAdress}`);
+	companyContainer.appendChild(companyMailElement);
 
-    const companyTaxElement = document.createElement('p');
-    companyTaxElement.textContent = `Vergi No: ${company.taxNum}`;
-    companyContainer.appendChild(companyTaxElement);
+	const companyFaxElement = createEditableElement(`Faks No: ${company.faxNum}`);
+	companyContainer.appendChild(companyFaxElement);
 
+	const companyTaxElement = createEditableElement(`Vergi No: ${company.taxNum}`);
+	companyContainer.appendChild(companyTaxElement);
 
-    // Display the products with a comma between them
-	const productsContainer = document.createElement('div');
-	productsContainer.classList.add('products-container');
-	productsContainer.textContent = `Ürünler: ${company.products.join(', ')}`;
+	// Display the products with a comma between them
+	const productsContainer = createEditableElement(`Ürünler: ${company.products.join(', ')}`);
+	companyContainer.appendChild(productsContainer);
 
-
-    companyContainer.appendChild(productsContainer);
-    container.appendChild(companyContainer);
+	container.appendChild(companyContainer);
 }
+
+function createEditableElement(text) {
+	const container = document.createElement('div');
+
+	const paragraph = document.createElement('p');
+	paragraph.textContent = text;
+
+	const input = document.createElement('input');
+	input.style.display = 'none'; // Initially hide input element
+
+	// Add click event listener to the paragraph
+	paragraph.addEventListener('dblclick', () => {
+		toggleEditMode(paragraph, input, text);
+	});
+
+	container.appendChild(paragraph);
+	container.appendChild(input);
+
+	return container;
+}
+
+function toggleEditMode(textElement, inputElement, originalText) {
+	// Define the handleKeyDown function
+	function handleKeyDown(event) {
+		if (event.key === 'Enter') {
+			// Confirm changes on Enter key
+			exitEditMode(textElement, inputElement, originalText, handleKeyDown);
+		} else if (event.key === 'Escape') {
+			// Cancel edit mode on Escape key
+			cancelEditMode(textElement, inputElement, originalText, handleKeyDown);
+		}
+	}
+
+	// Define the handleOutsideClick function
+	function handleOutsideClick(event) {
+		// Check if the click is outside the input element
+		if (!inputElement.contains(event.target)) {
+			cancelEditMode(textElement, inputElement, originalText, handleKeyDown);
+			// Remove the click event listener from the document body
+			document.body.removeEventListener('click', handleOutsideClick);
+		}
+	}
+
+	if (textElement.style.display === 'block' || textElement.style.display === '') {
+		// Entering edit mode
+		textElement.style.display = 'none';
+		inputElement.value = originalText;
+		inputElement.style.display = 'block';
+
+		inputElement.style.width = '100%';
+		inputElement.style.height = '30px';
+
+		inputElement.focus(); // Set focus to the input
+
+		// Add the keydown event listener
+		inputElement.addEventListener('keydown', handleKeyDown);
+
+		// Add the click event listener to the document body
+		document.body.addEventListener('click', handleOutsideClick);
+	} else {
+		// Exiting edit mode
+		exitEditMode(textElement, inputElement, originalText, handleKeyDown);
+	}
+}
+
+function exitEditMode(textElement, inputElement, originalText, handleKeyDown, id) {
+    const updatedText = inputElement.value.trim();
+
+    if (updatedText !== originalText) {
+        originalText = updatedText;
+        textElement.textContent = updatedText;
+
+        // Create the updatedCompany object
+        const updatedCompany = {
+            name: initialCompany.name,
+            address: initialCompany.address,  // Fix typo here
+            mailAdress: initialCompany.mailAdress,
+            faxNum: initialCompany.faxNum,
+            taxNum: initialCompany.taxNum,
+            products: [...initialCompany.products], // Ensure a copy to avoid modifying the original array
+        };
+
+        const elements = document.querySelectorAll('.company-info-container p');
+        elements.forEach(element => {
+            const textContent = element.textContent;
+            const identifier = textContent.split(': ')[0];
+
+            switch (identifier) {
+                case 'Ad':
+                    updatedCompany.name = textContent.split(': ')[1];
+                    break;
+                case 'Adres':
+                    updatedCompany.address = textContent.split(': ')[1];
+                    break;
+                case 'Mail Adresi':
+                    updatedCompany.mailAdress = textContent.split(': ')[1];
+                    break;
+                case 'Faks No':
+                    updatedCompany.faxNum = textContent.split(': ')[1];
+                    break;
+                case 'Vergi No':
+                    updatedCompany.taxNum = textContent.split(': ')[1];
+                    break;
+                case 'Ürünler':
+                    updatedCompany.products = textContent.split(': ')[1].split(',').map(item => item.trim());
+                    break;
+                default:
+                    break;
+            }
+        });
+
+        // Call your updateCompanyInfo function
+        c_db.updateCompanyInfo(initialCompany.id, updatedCompany)
+            .then(numReplaced => console.log(`Updated ${numReplaced} company(s)`))
+            .catch(err => console.error(err));
+
+		companiesState.companiesLoaded = false;
+		showResults();
+    }
+
+    // Common logic for both cases
+    textElement.style.display = 'block';
+    inputElement.style.display = 'none';
+    inputElement.style.width = '';
+
+    // Remove the keydown event listener
+    inputElement.removeEventListener('keydown', handleKeyDown);
+}
+
+
+function cancelEditMode(textElement, inputElement, originalText, handleKeyDown) {
+	// Revert changes and exit edit mode
+	textElement.style.display = 'block';
+	inputElement.style.display = 'none';
+	inputElement.style.width = ''; // Reset width
+
+	// Remove the keydown event listener
+	inputElement.removeEventListener('keydown', handleKeyDown);
+}
+
+

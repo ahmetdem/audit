@@ -52,3 +52,15 @@ ipcMain.on('quit-app', () => {
 function quitApp() {
   app.quit();
 }
+
+
+ipcMain.on('open-help-pdf', () => {
+  console.log("Received open-help-pdf message");
+  openHelpPDF();
+});
+
+// Add this function to open the help PDF
+function openHelpPDF() {
+  const { shell } = require('electron');
+  shell.openPath('./help.pdf');
+}

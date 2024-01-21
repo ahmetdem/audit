@@ -20,6 +20,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  // document.getElementById('help-button').addEventListener('click', () => {
+  //   ipcRenderer.send('open-help-pdf');
+  // });
+
   // Add click event listener to the Çıkış button
   document.getElementById('exit-link').addEventListener('click', () => {
     ipcRenderer.send('quit-app');

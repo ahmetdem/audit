@@ -40,7 +40,6 @@ export function displayQuestionsAndOptions(product) {
 
             const optionInput = document.createElement('input');
             optionInput.className = 'option-input';
-
             optionInput.style.display = 'none'; // Initially hide input element
 
             // Add click event listener to each option
@@ -85,7 +84,7 @@ function toggleEditMode(textElement, inputElement, originalText, questionId, opt
         inputElement.value = originalText;
         inputElement.style.display = 'block';
 
-        inputElement.style.width = '100%'; 
+        inputElement.style.width = '100%';
         inputElement.style.height = '30px';
 
         inputElement.focus(); // Set focus to the input
@@ -113,7 +112,7 @@ function exitEditMode(textElement, inputElement, originalText, questionId, optio
                 textElement.textContent = updatedText;
                 textElement.style.display = 'block';
                 inputElement.style.display = 'none';
-                
+
                 inputElement.style.width = textElement.offsetWidth + 'px';
 
                 // Remove the keydown event listener
@@ -123,13 +122,12 @@ function exitEditMode(textElement, inputElement, originalText, questionId, optio
             })
             .catch(error => {
                 console.error(error);
-                // Handle the error appropriately if needed
             });
     } else {
         // If no update is needed, proceed with the rest of the logic
         textElement.style.display = 'block';
         inputElement.style.display = 'none';
-        
+
         inputElement.style.width = textElement.offsetWidth + 'px';
 
         // Remove the keydown event listener

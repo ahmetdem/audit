@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	delete_option.addEventListener('click', function () {
 		// Display the confirmation dialog
-		const userConfirmed = confirm('Are you sure you want to delete this product?');
+		const userConfirmed = confirm('Silmek İstediğinize Emin misiniz?');
 	
 		// Check the user's choice
 		if (userConfirmed) {
@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			// Additional code if needed after deletion
 	
 			productsState.productsLoaded = false;
+			location.reload();
 	
 			hideContextMenu();
 		} else {
@@ -61,22 +62,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	const rename_option = document.getElementById('rename-option');
 	rename_option.style.display = 'none';
-
-	// rename_option.addEventListener('click', function () {
-	// 	const newProductName = prompt('Enter a new product name');
-
-	// 	p_db.findProductByName(selectedElement.textContent, (document) => {
-	// 		if (document) {
-	// 			p_db.updateProductName(document, newProductName, (numReplaced) => {
-	// 				if (numReplaced > 0) {
-	// 					console.log('Product was renamed successfully!');
-	// 				}
-	// 			});
-	// 		}
-	// 	});
-
-	// 	productsState.productsLoaded = false;
-
-	// 	hideContextMenu();
-	// });
 });

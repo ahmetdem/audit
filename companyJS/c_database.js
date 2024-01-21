@@ -70,6 +70,24 @@ export class compDatabaseManager {
 			}
 		});
 	}
+
+	
+	updateCompanyInfo(id, updatedCompany) {
+		console.log("Updating company with id:", id);
+		console.log("Updated company data:", updatedCompany);
+	
+		return new Promise((resolve, reject) => {
+			this.db.update({ id: id }, { $set: updatedCompany }, {}, (updateErr, numUpdated) => {
+				if (updateErr) {
+					console.error("Error updating company:", updateErr);
+					reject(updateErr);
+				} else {
+					console.log("Company updated successfully. Number of records updated:", numUpdated);
+					resolve(numUpdated);
+				}
+			});
+		});
+	}
 }
 
 export const c_db = new compDatabaseManager();

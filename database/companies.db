@@ -1,10 +1,10 @@
 {"id":21,"name":"selma","adress":"aselam","mailAdress":"asşldk","faxNum":"asddşlak","taxNum":"alşksddaşl","products":["lasşdasdşlaıpoklasl","asdas"],"_id":"0o80eSWIL0fJmdbc"}
-{"id":3,"name":"Butik","adress":"aşlskdsşal","mailAdress":"şlkassşdk","faxNum":"şlaksdşlka","taxNum":"qşlkdasşlfkşl","products":["Kitap","Elma","Kalem"],"_id":"9jjaR6ZK0MremTLA"}
-{"id":15,"name":"asdasda","adress":"as","mailAdress":"asdas","faxNum":"dasdas","taxNum":"dasdas","products":["Şekerleme","Elma"],"_id":"Ep7TeLpxDkjwavxH"}
-{"id":1,"name":"Aselsan","adress":"adka","mailAdress":"asşdkasşl","faxNum":"asşldkasşlkk","taxNum":"alskdşaslk","products":["Kitap","Elma"],"_id":"FT8bE4DiYVmKsTj3"}
-{"id":12,"name":"asdaasdasd","adress":"asdas","mailAdress":"dasda","faxNum":"sdasdas","taxNum":"dasd","products":["Elma","Şekerleme"],"_id":"GnUm1PN85LGI9w6U"}
+{"id":3,"name":"BUtik ahmet","adress":"aşlskdsşal","mailAdress":"butik fatma mail","faxNum":"şlaksdşlka","taxNum":"qşlkdasşlfkşl","products":["Kitap","Elma","Kalem"],"_id":"9jjaR6ZK0MremTLA","address":"aşlskdsşal"}
+{"id":15,"name":"Selam","adress":"as","mailAdress":"asdas","faxNum":"dasdas","taxNum":"dasdas","products":["Şekerleme","Elma"],"_id":"Ep7TeLpxDkjwavxH","address":"as"}
+{"id":1,"name":"Havelsan","adress":"adka","mailAdress":"asşdkasşl","faxNum":"asşldkasşlkk","taxNum":"alskdşaslk","products":["Kitap","Elma"],"_id":"FT8bE4DiYVmKsTj3","address":"adka"}
+{"id":12,"name":"asdaasdasd","adress":"asdas","mailAdress":"dasda","faxNum":"sdasdas","taxNum":"dasd","products":["Elma","Şekerleme"],"_id":"GnUm1PN85LGI9w6U","address":"selam"}
 {"id":18,"name":"alşsdkasşl","adress":"aşslskdşl","mailAdress":"askdşl","faxNum":"sşldlkdkşla","taxNum":"şlkasdşldkasşlkd","products":["asda","Elma","hello masdşlaskd","asşldkasş","lasşdasdşlaıpoklasl"],"_id":"Idb82c5IDRhUYXVo"}
-{"id":13,"name":"asdaasdasdşaslkdşl","adress":"asdas","mailAdress":"dasda","faxNum":"sdasdas","taxNum":"dasd","products":["Şekerleme","Elma"],"_id":"LxCZkrJopW5CLJX2"}
+{"id":13,"name":"Selam","adress":"asdas","mailAdress":"dasda","faxNum":"sdasdas","taxNum":"dasd","products":["Şekerleme","Elma"],"_id":"LxCZkrJopW5CLJX2","address":"asdas"}
 {"id":22,"name":"asdasdşl","adress":"asşldskaşl","mailAdress":"şlaskdşla","faxNum":"şlkassşldk","taxNum":"şlkasşdlka","products":["asdasfasdsdşlfka","armut","lasşdasdşlaıpoklasl"],"_id":"OwEAeSUypRYkGdYn"}
 {"id":8,"name":"özener ","adress":"ahaşdslk","mailAdress":"asşldkasşld","faxNum":"aşlskdasşl","taxNum":"aşlsdkasşl","products":["armut","Elma","Kalem"],"_id":"VxH4WWjNbWIMFwwD"}
 {"id":5,"name":"ahmet aş.","adress":"selam","mailAdress":"selma","faxNum":"selam","taxNum":"aslema","products":["asdasd","Şekerleme"],"_id":"ek5cwoViESKufMPI"}
@@ -20,3 +20,6 @@
 {"id":11,"name":"hola","adress":"asdasda","mailAdress":"sdasdasd","faxNum":"asdasd","taxNum":"asdasda","products":["asdasd","Şekerleme"],"_id":"rTzu0bQlKsFHINDc"}
 {"id":16,"name":"selamasdşask","adress":"sealm","mailAdress":"asşldaşl","faxNum":"laskdşla","taxNum":"şlaksdşlaksdasdasdsasdas","products":["Şekerleme","Elma"],"_id":"vJS8LfA8k3NrFqrm"}
 {"id":2,"name":"Baykar","adress":"aaşlsdkaş","mailAdress":"aksdşl","faxNum":"aşslkdşalk","taxNum":"alskldşlask","products":["Kalem","Kitap"],"_id":"yOYwFOILOfQYxVTg"}
+{"id":3,"name":"BUtik berk","adress":"aşlskdsşal","mailAdress":"butik fatma mail","faxNum":"şlaksdşlka","taxNum":"qşlkdasşlfkşl","products":["Kitap","Elma","Kalem"],"_id":"9jjaR6ZK0MremTLA","address":"aşlskdsşal"}
+{"id":15,"name":"Sonunda oldu","adress":"as","mailAdress":"asdas","faxNum":"dasdas","taxNum":"dasdas","products":["Şekerleme","Elma"],"_id":"Ep7TeLpxDkjwavxH","address":"as"}
+{"id":13,"name":"Merhaba","adress":"asdas","mailAdress":"dasda","faxNum":"sdasdas","taxNum":"dasd","products":["Şekerleme","Elma"],"_id":"LxCZkrJopW5CLJX2","address":"asdas"}

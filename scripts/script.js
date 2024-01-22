@@ -28,5 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('exit-link').addEventListener('click', () => {
     ipcRenderer.send('quit-app');
   });
+
+
 });
 

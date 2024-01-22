@@ -1,0 +1,19 @@
+ Memecik Zeytini:
+    Firm Name: {firm-name}
+    Store Name: {store-name}
+    Result Details for Memecik Zeytini:
+
+    1.Zeytinin rengi nedir?
+
+        Selected Option: {question-0-selected-option}
+        Result: {question-0-correct-option}
+    2.Zeytinin şekli nasıldır?
+
+        Selected Option: {question-1-selected-option}
+        Result: {question-1-correct-option}
+    Additional Information:
+
+    {Any other relevant information about the Memecik Zeytini or validation process}
+    Recommendation:
+
+    {Provide a recommendation or action based on the Memecik Zeytini validation results}

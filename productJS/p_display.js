@@ -150,9 +150,25 @@ function createFinalForm(productName, firmName, storeName, selectedOptions, prod
     const templateFileName = `${productName}.txt`.toLowerCase();
     const templateFilePath = path.join(templateFolderPath, templateFileName);
 
-    // Check if the template file exists
+    // Get the user's Documents folder path
+    const documentsFolderPath = path.join(process.env.HOME || process.env.USERPROFILE, 'Documents');
+    const formsFolderPath = path.join(documentsFolderPath, 'forms');
+
+    alert(templateFolderPath)
+
     if (!fs.existsSync(templateFilePath)) {
         console.error(`Template file for ${productName} not found.`);
+        
+        // write the form content to the text file
+        const formContent = `Firma Adı: ${firmName}\nMağaza Adı: ${storeName}\n\n`;
+        const fileName = `form-for-${productName}-and-${firmName}.txt`;
+        const filePath = path.join(formsFolderPath, fileName);
+
+        fs.writeFileSync(filePath, formContent);
+        console.log(`Form content written to ${filePath}`);
+
+        alert('Form Başarıyla Oluşturuldu!');
+
         return;
     }
 
@@ -174,11 +190,8 @@ function createFinalForm(productName, firmName, storeName, selectedOptions, prod
             .replace(`{question-${index + 1}-correct-option}`, correctOption.text);
     });
 
-    // Get the user's Documents folder path
-    const documentsFolderPath = path.join(process.env.HOME || process.env.USERPROFILE, 'Documents');
-
     // Create the forms folder path
-    const formsFolderPath = path.join(documentsFolderPath, 'forms');
+
 
     // Create the forms folder if it doesn't exist
     if (!fs.existsSync(formsFolderPath)) {

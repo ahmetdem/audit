@@ -1,0 +1,19 @@
+Product Validation Results:
+    Bursa Kestane Şekeri:
+        Firm Name: {firm-name}
+        Store Name: {store-name}
+        Result Details for Kestane Şekeri:
+
+        1.Kestane şekeri hangi kıvamdadır?
+            Selected Option: {question-0-selected-option}
+            Result: {question-0-correct-option}
+        2.Kestane şekerinin tadına bakarak hangi lezzeti alırsınız?
+
+            Selected Option: {question-1-selected-option}
+            Result: {question-1-correct-option}
+        Additional Information:
+
+        {Any other relevant information about the Kestane Şekeri or validation process}
+        Recommendation:
+
+        {Provide a recommendation or action based on the Kestane Şekeri validation results}

@@ -75,16 +75,6 @@ function handleResultClick(event) {
 
 	// choose the selected company
 	getProductsFromChoosenCompany(selectedCompany);
-
-	// display the first product of the selected company
-	c_db.findCompanyByName(selectedCompany, (company) => {
-		console.log(company);
-		g_Company = company;
-		p_db.findProductByName(company.products[0], (product) => {
-			console.log(product);
-			displayQuestionsAndOptions(product);
-		});
-	});	
 }
 
 
@@ -106,6 +96,13 @@ function getProductsFromChoosenCompany(selectedCompany) {
 			option.value = product;
 			option.text = product;
 			dropdown.appendChild(option);
+		});
+
+		
+
+		p_db.findProductByName(company.products[0], (product) => {
+			console.log(product);
+			displayQuestionsAndOptions(product);
 		});
 	});
 }
@@ -144,3 +141,18 @@ function setAllCompanies() {
 }
 
 document.getElementById('search-results').addEventListener('click', handleResultClick);
+
+window.onload = function () {
+	c_db.findAllCompanies((companies) => {
+		allCompanies = companies;
+		companiesLoaded = true;
+		console.log(allCompanies);
+		currentSelectedCompany = allCompanies[0].name;
+		getProductsFromChoosenCompany(currentSelectedCompany);
+
+		var firstCompanyElement = document.querySelector('.result-item-company');
+        if (firstCompanyElement) {
+            firstCompanyElement.classList.add('selected');
+        }
+	});
+};

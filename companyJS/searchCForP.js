@@ -75,7 +75,18 @@ function handleResultClick(event) {
 
 	// choose the selected company
 	getProductsFromChoosenCompany(selectedCompany);
+
+	// display the first product of the selected company
+	c_db.findCompanyByName(selectedCompany, (company) => {
+		console.log(company);
+		g_Company = company;
+		p_db.findProductByName(company.products[0], (product) => {
+			console.log(product);
+			displayQuestionsAndOptions(product);
+		});
+	});	
 }
+
 
 function getProductsFromChoosenCompany(selectedCompany) {
 	c_db.findCompanyByName(selectedCompany, (company) => {

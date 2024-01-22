@@ -1,0 +1,25 @@
+Product Validation Results:
+
+Firm Name: {firm-name}
+Store Name: {store-name}
+
+Result Details for Kalem:
+- Kalem is {valid/invalid} based on the following criteria:
+
+  1. Kalem rengi nedir?
+     - Selected Option: {question-1-selected-option}
+     - Result: {question-1-correct-option}
+
+  2. Kalem ucundaki malzeme nedir?
+     - Selected Option: {question-2-selected-option}
+     - Result: {question-2-correct-option}
+
+  3. Kalem üzerinde herhangi bir çatlak veya deformasyon var mı?
+     - Selected Option: {question-3-selected-option}
+     - Result: {question-3-correct-option}
+
+Additional Information:
+- {Any other relevant information about the Kalem or validation process}
+
+Recommendation:
+- {Provide a recommendation or action based on the Kalem validation results}

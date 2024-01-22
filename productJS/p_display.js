@@ -43,17 +43,17 @@ export function displayQuestionsAndOptions(product) {
         question.options.forEach(option => {
             const optionElement = document.createElement('p');
             optionElement.textContent = option.text;
-        
+
             // Set a unique ID for each option based on question and option IDs
             optionElement.id = `option-${question.id}-${option.id}`;
-        
+
             // Add click event listener to each option
             optionElement.addEventListener('click', () => {
                 handleOptionClick(question.id, option.id);
             });
-        
+
             optionsContainer.appendChild(optionElement);
-        });        
+        });
 
         questionContainer.appendChild(optionsContainer);
         container.appendChild(questionContainer);
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!allQuestionsAnswered) {
             alert('Lütfen tüm soruları cevaplayın.');
             return;
-        }  
+        }
 
         console.log(selectedOptions);
 
@@ -139,14 +139,41 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log(`Question: ${question.text}, Answer: ${selectedOption.text}`);
         });
 
-        createFinalForm (firmName, storeName, selectedOptions);
+        createFinalForm(g_Product.name, firmName, storeName, selectedOptions, g_Product);
     });
 });
 
 
-function createFinalForm(firmName, storeName, selectedOptions) {
-    const formContent = `Firm Name: ${firmName}\nStore Name: ${storeName}\nSelected Options: ${JSON.stringify(selectedOptions)}`;
-    
+function createFinalForm(productName, firmName, storeName, selectedOptions, product) {
+    // Read the template content based on the product name
+    const templateFolderPath = path.join(__dirname, 'templates');
+    const templateFileName = `${productName}.txt`.toLowerCase();
+    const templateFilePath = path.join(templateFolderPath, templateFileName);
+
+    // Check if the template file exists
+    if (!fs.existsSync(templateFilePath)) {
+        console.error(`Template file for ${productName} not found.`);
+        return;
+    }
+
+    const templateContent = fs.readFileSync(templateFilePath, 'utf-8');
+
+    // Replace placeholders with actual values
+    let formContent = templateContent
+        .replace('{firm-name}', firmName)
+        .replace('{store-name}', storeName);
+
+    // Replace placeholders for each question's selected option text and correct option
+    product.questions.forEach((question, index) => {
+        const selectedOptionId = selectedOptions[question.id];
+        const selectedOption = question.options.find(option => option.id === selectedOptionId);
+        const correctOption = question.options.find(option => option.isTrue);
+
+        formContent = formContent
+            .replace(`{question-${index + 1}-selected-option}`, selectedOption.text)
+            .replace(`{question-${index + 1}-correct-option}`, correctOption.text);
+    });
+
     // Get the user's Documents folder path
     const documentsFolderPath = path.join(process.env.HOME || process.env.USERPROFILE, 'Documents');
 
@@ -159,7 +186,7 @@ function createFinalForm(firmName, storeName, selectedOptions) {
     }
 
     // Create the file name and path
-    const fileName = `form-for-${g_Product.name}-and-${g_Company.name}.txt`;
+    const fileName = `form-for-${productName}-and-${firmName}.txt`;
     const filePath = path.join(formsFolderPath, fileName);
 
     // Write the form content to the text file

@@ -6,7 +6,8 @@
   "author": "Ahmet Yusuf Demir",
   "scripts": {
     "start": "electron main.js",
-    "build-linux": "electron-packager . Audit --platform=linux --arch=x64 --electronVersion=13.1.9 --overwrite --prune"
+    "build-linux": "electron-packager . Audit --platform=linux --arch=x64 --electronVersion=13.1.9 --overwrite --prune",
+    "build-windows": "electron-packager . Audit --platform=win32 --arch=x64 --electronVersion=13.1.9 --overwrite --prune"
   },
   "dependencies": {
     "nedb": "^1.8.0"
